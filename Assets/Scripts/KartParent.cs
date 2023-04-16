@@ -7,6 +7,10 @@ public class KartParent : MonoBehaviour
     private float topSpeed;
     private float acceleration;
     private float handling;
+    private float originalTopSpeed;
+    private float originalAcceleration;
+    private float OriginalHandling;
+    bool createdTopSpeed = false, createdAcceleration = false, createdHandling = false;
 
 
     // Start is called before the first frame update
@@ -40,16 +44,38 @@ public class KartParent : MonoBehaviour
     public void setTopSpeed(float topSpeed)
     {
         this.topSpeed = topSpeed;
+        if (createdTopSpeed == false) 
+        { 
+            originalTopSpeed = topSpeed;
+            createdTopSpeed = true;
+        }
     }
 
     public void setAcceleration(float acceleration)
     {
         this.acceleration = acceleration;
+        if (createdAcceleration == false)
+        {
+            originalAcceleration = acceleration;
+            createdAcceleration = true;
+        }
     }
 
     public void setHandling(float handling)
     {
         this.handling = handling;
+        if (createdHandling == false) 
+        {
+            OriginalHandling = handling;
+            createdHandling = true;
+        }
+    }
+
+    public void resetStats()
+    {
+        handling = OriginalHandling;
+        acceleration = originalAcceleration;
+        topSpeed = originalTopSpeed;
     }
 
     
