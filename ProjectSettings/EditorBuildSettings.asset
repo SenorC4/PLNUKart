@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/MainMenu.unity
+    guid: 0e39a861083d4d44fa7e3c6aa7ebc2a0
+  - enabled: 1
+    path: Assets/Scenes/KartPicker.unity
+    guid: aa6fc6787478feb4281efe15c527facf
+  - enabled: 1
+    path: Assets/Scenes/PLNUSouth.unity
+    guid: 05f12be85f04a9c47a56ce60dc5a5fd6
   m_configObjects: {}
