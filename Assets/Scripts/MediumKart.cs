@@ -9,9 +9,9 @@ public class MediumKart : KartParent
     void Start()
     {
         movement = GetComponent<Movement>(); 
-        setAcceleration(.05f);
+        setAcceleration(.002f);
         setHandling(7f);
-        setTopSpeed(4f);
+        setTopSpeed(2.5f);
         movement.setStats(getAcceleration(), getTopSpeed(), getHandling());
     }
 

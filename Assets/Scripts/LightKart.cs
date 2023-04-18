@@ -9,9 +9,9 @@ public class LightKart : KartParent
     void Start()
     {
         movement = GetComponent<Movement>();
-        setAcceleration(.1f);
+        setAcceleration(.003f);
         setHandling(8f);
-        setTopSpeed(3f);
+        setTopSpeed(2f);
         movement.setStats(getAcceleration(), getTopSpeed(), getHandling());
     }
 

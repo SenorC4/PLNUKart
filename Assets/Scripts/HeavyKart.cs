@@ -10,8 +10,8 @@ public class HeavyKart : KartParent
     {
         movement = GetComponent<Movement>();
         setAcceleration(.001f);
-        setHandling(5f);
-        setTopSpeed(5f);
+        setHandling(6.5f);
+        setTopSpeed(3f);
         movement.setStats(getAcceleration(), getTopSpeed(), getHandling());
     }
 
