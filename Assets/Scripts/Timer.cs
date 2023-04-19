@@ -16,6 +16,12 @@ public class Timer : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        inGameTimer.text = timer.ToString("F2");
+        inGameTimer.text = timer.ToString("F2"); 
     }
+
+    public void decreaseTime()
+    {
+        timer -= 10;
+    }
+
 }

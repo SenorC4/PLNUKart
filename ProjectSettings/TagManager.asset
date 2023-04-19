@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - road
+  - StopWatch
+  - Timer
   layers:
   - Default
   - TransparentFX

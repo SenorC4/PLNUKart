@@ -10,6 +10,7 @@ public class KartParent : MonoBehaviour
     private float originalTopSpeed;
     private float originalAcceleration;
     private float OriginalHandling;
+    private Timer time;
     bool createdTopSpeed = false, createdAcceleration = false, createdHandling = false;
 
 
@@ -78,5 +79,14 @@ public class KartParent : MonoBehaviour
         topSpeed = originalTopSpeed;
     }
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "StopWatch") 
+        {
+            time = GameObject.FindGameObjectWithTag("Timer").GetComponent<Timer>();
+            time.decreaseTime();
+            other.gameObject.SetActive(false);
+        }
+    }
+
 }
