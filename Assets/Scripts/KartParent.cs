@@ -87,6 +87,10 @@ public class KartParent : MonoBehaviour
             time.decreaseTime();
             other.gameObject.SetActive(false);
         }
+        if (other.gameObject.tag == "Block")
+        {
+            other.gameObject.SetActive(false);
+        }
     }
 
 }
