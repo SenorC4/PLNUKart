@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KartPicker : MonoBehaviour
 {
@@ -9,7 +10,13 @@ public class KartPicker : MonoBehaviour
     public GameObject kart2;
     public GameObject kart3;
 
+    public Button kart1Button;
+    public Button kart2Button;
+    public Button kart3Button;
+
     public Vector3 rotation;
+
+    private static string selected;
 
     // Start is called before the first frame update
     void Start()
@@ -30,15 +37,14 @@ public class KartPicker : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit)) {
                     Debug.Log( hit.transform.name);
-                    if(hit.transform.name == "LightKart"){
-                        
-
-                    }
-
-
-
+                    selected = hit.transform.name;
                 }
         }
 
+    }
+
+
+    public static string getSelectedKart(){
+        return selected;
     }
 }
