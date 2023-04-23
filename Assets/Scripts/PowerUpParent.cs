@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Reflection.Emit;
 using UnityEngine;
 
-public class PowerUpParent : MonoBehaviour
+public abstract class PowerUpParent : MonoBehaviour
 {
     public string typeOfPowerUp;
+    public float powerTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,4 +19,11 @@ public class PowerUpParent : MonoBehaviour
     {
         return typeOfPowerUp;
     }
+
+    public float getTimer()
+    {
+        return powerTimer;
+    }
+
+    public abstract float activate(float acceleration, float topSpeed);
 }

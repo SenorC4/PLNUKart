@@ -10,21 +10,47 @@ public class KartParent : MonoBehaviour
     private float originalTopSpeed;
     private float originalAcceleration;
     private float OriginalHandling;
+    private float powerUpTimer;
+    private float tempTimer;
     private Timer time;
+    private List<PowerUpParent> powerUps;
+    private Movement movement;
     bool createdTopSpeed = false, createdAcceleration = false, createdHandling = false;
+    bool hasPowerUp = false, usingPowerUp = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        //powerUps = gameObject.AddComponent<List<PowerUpParent>>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        if (Input.GetKey(KeyCode.E) && powerUps.Count != 0)
+        {
+           acceleration = powerUps[0].activate(acceleration, topSpeed);
+           movement.setStats(acceleration, topSpeed, handling);
+           powerUpTimer = powerUps[0].getTimer();
+           powerUps.Clear();
+           hasPowerUp = false;
+           usingPowerUp = true;
+        }
 
-    
+        if (usingPowerUp == true)
+        {
+            tempTimer += Time.deltaTime;
+        }
+
+        if (tempTimer > powerUpTimer)
+        {
+            resetStats();
+            movement.setStats(acceleration, topSpeed, handling);
+            tempTimer = 0;
+            usingPowerUp = false;
+        }
     }
 
     public float getTopSpeed()
@@ -87,10 +113,19 @@ public class KartParent : MonoBehaviour
             time.decreaseTime();
             other.gameObject.SetActive(false);
         }
-        if (other.gameObject.tag == "Block")
+        
+        if (other.gameObject.tag == "Block" && hasPowerUp == false)
         {
+            powerUps = new List<PowerUpParent>();
+            powerUps.Add(gameObject.AddComponent(typeof(SingleSpeedBoost)) as SingleSpeedBoost);
+            hasPowerUp = true;
             other.gameObject.SetActive(false);
         }
+    }
+
+    public void setMovement(Movement movement)
+    {
+        this.movement = movement;
     }
 
 }

@@ -13,6 +13,7 @@ public class HeavyKart : KartParent
         setHandling(6.5f);
         setTopSpeed(3f);
         movement.setStats(getAcceleration(), getTopSpeed(), getHandling());
+        setMovement(movement);
     }
 
     // Update is called once per frame

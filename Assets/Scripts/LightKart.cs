@@ -13,6 +13,7 @@ public class LightKart : KartParent
         setHandling(8f);
         setTopSpeed(2f);
         movement.setStats(getAcceleration(), getTopSpeed(), getHandling());
+        setMovement(movement);
     }
 
     // Update is called once per frame

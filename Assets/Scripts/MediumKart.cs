@@ -13,6 +13,7 @@ public class MediumKart : KartParent
         setHandling(7f);
         setTopSpeed(2.5f);
         movement.setStats(getAcceleration(), getTopSpeed(), getHandling());
+        setMovement(movement);
     }
 
     // Update is called once per frame
