@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class LightKart : KartParent
 {
-    private Movement movement;
     // Start is called before the first frame update
     void Start()
     {
-        movement = GetComponent<Movement>();
         setAcceleration(.003f);
         setHandling(8f);
         setTopSpeed(2f);
-        movement.setStats(getAcceleration(), getTopSpeed(), getHandling());
-        setMovement(movement);
+        GetComponent<Movement>().setStats(getAcceleration(), getTopSpeed(), getHandling());
+        setMovement(GetComponent<Movement>());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log("test");
+        base.Update();
     }
 }

@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class MediumKart : KartParent
 {
-    private Movement movement;
     // Start is called before the first frame update
     void Start()
-    {
-        movement = GetComponent<Movement>(); 
+    { 
         setAcceleration(.002f);
         setHandling(7f);
         setTopSpeed(2.5f);
-        movement.setStats(getAcceleration(), getTopSpeed(), getHandling());
-        setMovement(movement);
+        GetComponent<Movement>().setStats(getAcceleration(), getTopSpeed(), getHandling());
+        setMovement(GetComponent<Movement>());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log("test");
+        base.Update();
     }
 }

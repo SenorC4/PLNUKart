@@ -7,6 +7,7 @@ public abstract class PowerUpParent : MonoBehaviour
 {
     public string typeOfPowerUp;
     public float powerTimer;
+    public float charges;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +26,9 @@ public abstract class PowerUpParent : MonoBehaviour
         return powerTimer;
     }
 
-    public abstract float activate(float acceleration, float topSpeed);
+    public void decreaseCharges()
+    {
+        charges--;
+    }
+    public abstract List<float> activate(float acceleration, float topSpeed);
 }

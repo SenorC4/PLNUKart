@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class SingleSpeedBoost : PowerUpParent
+public class TripleSpeedBoost : PowerUpParent
 {
-    
     // Start is called before the first frame update
     void Start()
     {
         typeOfPowerUp = "Speed";
         powerTimer = 5;
-        charges = 1;
+        charges = 3;
     }
 
     public override List<float> activate(float acceleration, float topSpeed)

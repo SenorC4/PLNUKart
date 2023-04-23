@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KartParent : MonoBehaviour
 {
+    private float charges;
     private float topSpeed;
     private float acceleration;
     private float handling;
@@ -26,18 +27,28 @@ public class KartParent : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
 
-        if (Input.GetKey(KeyCode.E) && powerUps.Count != 0)
+        if (Input.GetKey(KeyCode.E) && powerUps.Count != 0 && usingPowerUp == false)
         {
-           acceleration = powerUps[0].activate(acceleration, topSpeed);
-           movement.setStats(acceleration, topSpeed, handling);
-           powerUpTimer = powerUps[0].getTimer();
-           powerUps.Clear();
-           hasPowerUp = false;
-           usingPowerUp = true;
+            List<float> changedStats = powerUps[0].activate(acceleration, topSpeed);
+            acceleration = changedStats[0];
+            topSpeed = changedStats[1];
+            charges = changedStats[2];
+            powerUps[0].decreaseCharges();
+            charges--;
+            movement.setStats(acceleration, topSpeed, handling);
+            powerUpTimer = powerUps[0].getTimer();
+            if (charges == 0)
+            {
+                powerUps.Clear();
+            } 
+            hasPowerUp = false;
+            usingPowerUp = true;
+            Debug.Log("test");
         }
+        //Debug.Log("test");
 
         if (usingPowerUp == true)
         {
@@ -113,11 +124,22 @@ public class KartParent : MonoBehaviour
             time.decreaseTime();
             other.gameObject.SetActive(false);
         }
-        
+
         if (other.gameObject.tag == "Block" && hasPowerUp == false)
         {
             powerUps = new List<PowerUpParent>();
-            powerUps.Add(gameObject.AddComponent(typeof(SingleSpeedBoost)) as SingleSpeedBoost);
+            int range = Random.Range(0, 2);
+            switch (range)
+            {
+                case 0: powerUps.Add(gameObject.AddComponent(typeof(SingleSpeedBoost)) as SingleSpeedBoost);
+                    Debug.Log("single");
+                    break;
+                case 1: powerUps.Add(gameObject.AddComponent(typeof(TripleSpeedBoost)) as TripleSpeedBoost);
+                    Debug.Log("triple");
+                    break;
+                default:
+                    break;
+            }
             hasPowerUp = true;
             other.gameObject.SetActive(false);
         }
