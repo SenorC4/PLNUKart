@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
 
     private Rigidbody rb;
     private float currentSpeed = 0f;
+    private int playerNum = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -54,5 +55,30 @@ public class Movement : MonoBehaviour
         this.handling = handling;
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "grass")
+        {
+            acceleration = 0.005f;
+            topSpeed = 2f;
+        }
+        if (collision.gameObject.tag == "road")
+        {
+            acceleration = 0.01f;
+            topSpeed = 4f;
+        }
+    }
 
+    public int getPlayerNum()
+    {
+        return playerNum;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "checkpoint")
+        {
+            other.gameObject.GetComponent<CheckpointBehavior>().checkHit(playerNum);
+        }
+    }
 }

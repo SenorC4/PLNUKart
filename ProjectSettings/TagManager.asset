@@ -8,6 +8,8 @@ TagManager:
   - StopWatch
   - Timer
   - Block
+  - grass
+  - checkpoint
   layers:
   - Default
   - TransparentFX
