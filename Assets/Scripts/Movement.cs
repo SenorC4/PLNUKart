@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
 
     private Rigidbody rb;
     private float currentSpeed = 0f;
+    private int playerNum = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +66,19 @@ public class Movement : MonoBehaviour
         {
             acceleration = 0.01f;
             topSpeed = 4f;
+        }
+    }
+
+    public int getPlayerNum()
+    {
+        return playerNum;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "checkpoint")
+        {
+            other.gameObject.GetComponent<CheckpointBehavior>().checkHit(playerNum);
         }
     }
 }
