@@ -54,5 +54,17 @@ public class Movement : MonoBehaviour
         this.handling = handling;
     }
 
-
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "grass")
+        {
+            acceleration = 0.005f;
+            topSpeed = 2f;
+        }
+        if (collision.gameObject.tag == "road")
+        {
+            acceleration = 0.01f;
+            topSpeed = 4f;
+        }
+    }
 }
