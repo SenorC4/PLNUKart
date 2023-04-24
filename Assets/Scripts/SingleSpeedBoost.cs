@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class SingleSpeedBoost : PowerUpParent
 {
-    
+    public GameObject prefab;
     // Start is called before the first frame update
     void Start()
     {
+
         typeOfPowerUp = "Speed";
         powerTimer = 5;
         charges = 1;
@@ -21,5 +22,10 @@ public class SingleSpeedBoost : PowerUpParent
         result.Add(charges);
         return result;
         //return acceleration * 100;
+    }
+
+    public override GameObject getPrefab()
+    {
+        return prefab;
     }
 }

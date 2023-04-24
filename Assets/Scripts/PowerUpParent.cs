@@ -30,5 +30,7 @@ public abstract class PowerUpParent : MonoBehaviour
     {
         charges--;
     }
+
+    public abstract GameObject getPrefab();
     public abstract List<float> activate(float acceleration, float topSpeed);
 }

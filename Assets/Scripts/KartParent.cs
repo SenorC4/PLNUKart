@@ -144,6 +144,8 @@ public class KartParent : MonoBehaviour
             }
             hasPowerUp = true;
             other.gameObject.SetActive(false);
+            GameObject prefab = powerUps[0].getPrefab();
+            Instantiate(prefab);
         }
     }
 
