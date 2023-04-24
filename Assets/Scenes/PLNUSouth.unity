@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 71528986}
   - component: {fileID: 71528985}
   - component: {fileID: 71528988}
+  - component: {fileID: 71528989}
   m_Layer: 0
   m_Name: MainTrack
   m_TagString: Untagged
@@ -222,6 +223,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 146.1202, y: 0.5, z: 85.57403}
   m_Center: {x: 69.02627, y: -0.25, z: 37.65756}
+--- !u!64 &71528989
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71528984}
+  m_Material: {fileID: 13400000, guid: 22db0bd539e4f084c9bcf441e08bfcfc, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1501874050}
 --- !u!1 &86507280
 GameObject:
   m_ObjectHideFlags: 0
