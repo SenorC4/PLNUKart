@@ -16,6 +16,7 @@ public class KartParent : MonoBehaviour
     private Timer time;
     private List<PowerUpParent> powerUps;
     private Movement movement;
+    private Rigidbody rb;
     bool createdTopSpeed = false, createdAcceleration = false, createdHandling = false;
     bool hasPowerUp = false, usingPowerUp = false;
 
@@ -24,6 +25,7 @@ public class KartParent : MonoBehaviour
     void Start()
     {
         //powerUps = gameObject.AddComponent<List<PowerUpParent>>();
+        rb = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
