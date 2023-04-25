@@ -16,7 +16,7 @@ public abstract class PowerUpParent : MonoBehaviour
 
     // Update is called once per frame
 
-    public string getType()
+    public string WhatKind()
     {
         return typeOfPowerUp;
     }

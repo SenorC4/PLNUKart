@@ -10,7 +10,7 @@ public class TripleSpeedBoost : PowerUpParent
     void Start()
     {
         //prefab = GetComponent<GameObject>();
-        typeOfPowerUp = "Speed";
+        typeOfPowerUp = "TripleSpeed";
         powerTimer = 5;
         charges = 3;
     }

@@ -37,10 +37,11 @@ public class KartParent : MonoBehaviour
     public void Update()
     {
         kartPos = rb.transform.position;
-        if (hasPowerUp == true)
+        if (hasPowerUp == true || charges != 0)
         {
             kartPos.y -= 2;
             prefab.transform.position = kartPos;
+            prefab.transform.rotation = rb.transform.rotation;
 
         }
 
@@ -55,14 +56,36 @@ public class KartParent : MonoBehaviour
             charges--;
             movement.setStats(acceleration, topSpeed, handling);
             powerUpTimer = powerUps[0].getTimer();
+            Debug.Log(powerUpTimer);
             if (charges == 0)
             {
                 powerUps.Clear();
+                Destroy(prefab);
             } 
+            else if(charges == 2 && type == "TripleSpeed")
+            {
+                Destroy(prefab);
+                prefab = GameObject.FindGameObjectWithTag("Holder").GetComponent<PowerUpHolder>().getPrefab("DoubleSpeed");
+                prefab = Instantiate(prefab, kartPos, Quaternion.identity);
+            }
+            else if (charges == 2 && type == "TripleShell")
+            {
+
+            }
+            else if (charges == 1 && type == "TripleSpeed")
+            {
+                Destroy(prefab);
+                prefab = GameObject.FindGameObjectWithTag("Holder").GetComponent<PowerUpHolder>().getPrefab("SingleSpeed");
+                prefab = Instantiate(prefab, kartPos, Quaternion.identity);
+            }
+            else if (charges == 1 && type == "TripleShell")
+            {
+
+            }
             hasPowerUp = false;
             usingPowerUp = true;
             Debug.Log("test");
-            Destroy(prefab);
+            
         }
         //Debug.Log("test");
 
@@ -148,10 +171,11 @@ public class KartParent : MonoBehaviour
             switch (range)
             {
                 case 0: powerUps.Add(gameObject.AddComponent(typeof(SingleSpeedBoost)) as SingleSpeedBoost);
-                    Debug.Log("single");
+                    //Debug.Log("single");
+                    type = "SingleSpeed";
                     break;
                 case 1: powerUps.Add(gameObject.AddComponent(typeof(TripleSpeedBoost)) as TripleSpeedBoost);
-                    Debug.Log("triple");
+                    type = "TripleSpeed";
                     break;
                 default:
                     break;
@@ -159,7 +183,8 @@ public class KartParent : MonoBehaviour
             hasPowerUp = true;
             other.gameObject.SetActive(false);
 
-            type = powerUps[0].getType();
+            //type = powerUps[0].WhatKind();
+            //Debug.Log(powerUps[0].WhatKind());
             //if (type == "SingleBoost")
             //{
 

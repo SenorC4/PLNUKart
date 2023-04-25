@@ -9,7 +9,7 @@ public class SingleSpeedBoost : PowerUpParent
     void Start()
     {
         //prefab = GetComponent<GameObject>();
-        typeOfPowerUp = "Speed";
+        typeOfPowerUp = "SingleSpeed";
         powerTimer = 5;
         charges = 1;
     }
