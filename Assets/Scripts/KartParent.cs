@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class KartParent : MonoBehaviour
 {
+    private string type;
     private float charges;
     private float topSpeed;
     private float acceleration;
@@ -13,10 +15,13 @@ public class KartParent : MonoBehaviour
     private float OriginalHandling;
     private float powerUpTimer;
     private float tempTimer;
+    private Vector3 kartPos;
+    private Vector3 prefabPos;
     private Timer time;
     private List<PowerUpParent> powerUps;
     private Movement movement;
-    private Rigidbody rb;
+    public Rigidbody rb;
+    private GameObject prefab;
     bool createdTopSpeed = false, createdAcceleration = false, createdHandling = false;
     bool hasPowerUp = false, usingPowerUp = false;
 
@@ -25,12 +30,20 @@ public class KartParent : MonoBehaviour
     void Start()
     {
         //powerUps = gameObject.AddComponent<List<PowerUpParent>>();
-        rb = gameObject.GetComponent<Rigidbody>();
+        //rb = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     public void Update()
     {
+        kartPos = rb.transform.position;
+        if (hasPowerUp == true)
+        {
+            kartPos.y -= 2;
+            prefab.transform.position = kartPos;
+
+        }
+
 
         if (Input.GetKey(KeyCode.E) && powerUps.Count != 0 && usingPowerUp == false)
         {
@@ -49,6 +62,7 @@ public class KartParent : MonoBehaviour
             hasPowerUp = false;
             usingPowerUp = true;
             Debug.Log("test");
+            Destroy(prefab);
         }
         //Debug.Log("test");
 
@@ -144,8 +158,22 @@ public class KartParent : MonoBehaviour
             }
             hasPowerUp = true;
             other.gameObject.SetActive(false);
-            GameObject prefab = powerUps[0].getPrefab();
-            Instantiate(prefab);
+
+            type = powerUps[0].getType();
+            //if (type == "SingleBoost")
+            //{
+
+            //}
+
+
+
+            prefab = GameObject.FindGameObjectWithTag("Holder").GetComponent<PowerUpHolder>().getPrefab(type);
+            kartPos = rb.transform.position;
+            prefabPos = new Vector3(kartPos.x, kartPos.y - 2, kartPos.z - 1);
+            prefab = Instantiate(prefab, prefabPos, Quaternion.identity);
+            //kartPos.x -= 2;
+            //GameObject prefab = powerUps[0].getPrefab();
+
         }
     }
 

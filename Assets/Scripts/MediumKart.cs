@@ -6,7 +6,8 @@ public class MediumKart : KartParent
 {
     // Start is called before the first frame update
     void Start()
-    { 
+    {
+        rb = gameObject.GetComponent<Rigidbody>();
         setAcceleration(.002f);
         setHandling(7f);
         setTopSpeed(2.5f);

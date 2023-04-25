@@ -207,11 +207,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3307084370745542028}
-  - component: {fileID: 6507601609271176543}
-  - component: {fileID: 6850441046216113154}
   m_Layer: 0
   m_Name: Yerb Can
-  m_TagString: Untagged
+  m_TagString: Yerb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,7 +222,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821196704917714828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.482, y: 1.097, z: 2.953}
+  m_LocalPosition: {x: 37183.25, y: 10386.667, z: 183505.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -232,38 +230,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6507601609271176543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1821196704917714828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9ff0f32bf740da4a85a4c0c6080815a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  typeOfPowerUp: 
-  powerTimer: 0
-  charges: 0
-  prefab: {fileID: 1821196704917714828}
---- !u!114 &6850441046216113154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1821196704917714828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bf487dd9821b1a4cabfe2619605731f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  typeOfPowerUp: 
-  powerTimer: 0
-  charges: 0
-  prefab: {fileID: 1821196704917714828}
 --- !u!1 &2376814285718489237
 GameObject:
   m_ObjectHideFlags: 0

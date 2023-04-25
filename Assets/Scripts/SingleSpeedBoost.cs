@@ -8,7 +8,7 @@ public class SingleSpeedBoost : PowerUpParent
     // Start is called before the first frame update
     void Start()
     {
-
+        //prefab = GetComponent<GameObject>();
         typeOfPowerUp = "Speed";
         powerTimer = 5;
         charges = 1;

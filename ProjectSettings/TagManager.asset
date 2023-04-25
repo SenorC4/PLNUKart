@@ -10,6 +10,8 @@ TagManager:
   - Block
   - grass
   - checkpoint
+  - Yerb
+  - Holder
   layers:
   - Default
   - TransparentFX

@@ -7,6 +7,7 @@ public class LightKart : KartParent
     // Start is called before the first frame update
     void Start()
     {
+        rb = gameObject.GetComponent<Rigidbody>();
         setAcceleration(.003f);
         setHandling(8f);
         setTopSpeed(2f);

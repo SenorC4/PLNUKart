@@ -4105,9 +4105,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1812952811}
   - component: {fileID: 1812952812}
+  - component: {fileID: 1812952813}
   m_Layer: 0
   m_Name: Script Holder
-  m_TagString: Untagged
+  m_TagString: Holder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4145,6 +4146,19 @@ MonoBehaviour:
     type: 3}
   HeavyKart: {fileID: 7607641992617174052, guid: ccef295b457b6304cb505aa5d907d84d,
     type: 3}
+--- !u!114 &1812952813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812952810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0eb96eb147f7f843b375d451762830f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yerb: {fileID: 1821196704917714828, guid: bc648019a75db774aa03c3a27df6540e, type: 3}
 --- !u!1 &1841580729
 GameObject:
   m_ObjectHideFlags: 0

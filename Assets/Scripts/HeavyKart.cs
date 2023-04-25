@@ -7,6 +7,7 @@ public class HeavyKart : KartParent
     // Start is called before the first frame update
     void Start()
     {
+        rb = gameObject.GetComponent<Rigidbody>();
         setAcceleration(.001f);
         setHandling(6.5f);
         setTopSpeed(3f);
