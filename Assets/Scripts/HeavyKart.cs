@@ -11,7 +11,7 @@ public class HeavyKart : KartParent
         setAcceleration(.001f);
         setHandling(6.5f);
         setTopSpeed(3f);
-        GetComponent<Movement>().setStats(getAcceleration(), getTopSpeed(), getHandling());
+        GetComponent<Movement>().setStats(getAcceleration(), getTopSpeed(), getHandling(), false);
         setMovement(GetComponent<Movement>());
     }
 

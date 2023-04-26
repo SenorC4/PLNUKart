@@ -16,6 +16,7 @@ public class Movement : MonoBehaviour
     private Rigidbody rb;
     private float currentSpeed = 0f;
     private int playerNum = 1;
+    private bool isBoosting = false;
 
     // Start is called before the first frame update
     void Start()
@@ -49,24 +50,33 @@ public class Movement : MonoBehaviour
         rb.AddForce(rb.transform.forward * currentSpeed, ForceMode.Impulse);
     }
 
-    public void setStats(float acceleration, float topSpeed, float handling)
+    public void setStats(float acceleration, float topSpeed, float handling, bool isBoosting)
     {
         this.acceleration = acceleration;
+        Debug.Log(this.acceleration);
+        Debug.Log(acceleration);
         this.topSpeed = topSpeed;
         this.handling = handling;
+        this.isBoosting = isBoosting;
     }
 
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.tag == "grass")
         {
-            acceleration = 0.005f;
-            topSpeed = 2f;
+            if (isBoosting == false)
+            {
+                acceleration = 0.005f;
+                topSpeed = 2f;
+            }
         }
         if (collision.gameObject.tag == "road")
         {
-            acceleration = 0.01f;
-            topSpeed = 4f;
+            if (isBoosting == false)
+            {
+                acceleration = 0.01f;
+                topSpeed = 4f;
+            }
         }
     }
 

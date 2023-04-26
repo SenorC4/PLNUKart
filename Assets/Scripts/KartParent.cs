@@ -13,8 +13,8 @@ public class KartParent : MonoBehaviour
     private float originalTopSpeed;
     private float originalAcceleration;
     private float OriginalHandling;
-    private float powerUpTimer;
-    private float tempTimer;
+    private float powerUpTimer = 0;
+    private float tempTimer = 0;
     private Vector3 kartPos;
     private Vector3 prefabPos;
     private Timer time;
@@ -24,6 +24,10 @@ public class KartParent : MonoBehaviour
     private GameObject prefab;
     bool createdTopSpeed = false, createdAcceleration = false, createdHandling = false;
     bool hasPowerUp = false, usingPowerUp = false;
+    bool isBoosting = false;
+    bool hitRamp = false;
+    float rampTimer = 5;
+    float tempRampTimer = 0;
 
 
     // Start is called before the first frame update
@@ -48,13 +52,17 @@ public class KartParent : MonoBehaviour
 
         if (Input.GetKey(KeyCode.E) && powerUps.Count != 0 && usingPowerUp == false)
         {
+            if (type == "TripleSpeed" || type == "SingleSpeedBoost")
+            {
+                isBoosting = true;
+            }
             List<float> changedStats = powerUps[0].activate(acceleration, topSpeed);
             acceleration = changedStats[0];
             topSpeed = changedStats[1];
             charges = changedStats[2];
             powerUps[0].decreaseCharges();
             charges--;
-            movement.setStats(acceleration, topSpeed, handling);
+            movement.setStats(acceleration, topSpeed, handling, isBoosting);
             powerUpTimer = powerUps[0].getTimer();
             Debug.Log(powerUpTimer);
             if (charges == 0)
@@ -93,14 +101,29 @@ public class KartParent : MonoBehaviour
         if (usingPowerUp == true)
         {
             tempTimer += Time.deltaTime;
+
         }
 
         if (tempTimer > powerUpTimer)
         {
+            Debug.Log("done");
             resetStats();
-            movement.setStats(acceleration, topSpeed, handling);
+            movement.setStats(acceleration, topSpeed, handling, isBoosting);
             tempTimer = 0;
             usingPowerUp = false;
+        }
+
+        if (hitRamp == true)
+        {
+            tempRampTimer += Time.deltaTime;
+            if (tempRampTimer > rampTimer) 
+            {
+                tempRampTimer = 0;
+                resetStats();
+                movement.setStats(acceleration, topSpeed, handling, isBoosting);
+                hitRamp = false;
+                //Debug.Log(acceleration);
+            }
         }
     }
 
@@ -151,6 +174,7 @@ public class KartParent : MonoBehaviour
 
     public void resetStats()
     {
+        isBoosting = false;
         handling = OriginalHandling;
         acceleration = originalAcceleration;
         topSpeed = originalTopSpeed;
@@ -164,6 +188,17 @@ public class KartParent : MonoBehaviour
             time.decreaseTime();
             other.gameObject.SetActive(false);
         }
+        if (other.gameObject.tag == "SpeedRamp" && hitRamp == false)
+        {
+            hitRamp = true;
+            isBoosting = true;
+            //Debug.Log(acceleration);
+            acceleration = acceleration * 5;
+            topSpeed = topSpeed * 2.5f;
+            movement.setStats(acceleration, topSpeed, handling, isBoosting);
+            //Debug.Log(acceleration);
+            //Debug.Log("Doing!!!");
+        }
 
         if (other.gameObject.tag == "Block" && hasPowerUp == false)
         {
@@ -172,34 +207,24 @@ public class KartParent : MonoBehaviour
             switch (range)
             {
                 case 0: powerUps.Add(gameObject.AddComponent(typeof(SingleSpeedBoost)) as SingleSpeedBoost);
-                    //Debug.Log("single");
+                    Debug.Log(powerUps[0].getTimer());
                     type = "SingleSpeed";
+                    isBoosting = true;
                     break;
                 case 1: powerUps.Add(gameObject.AddComponent(typeof(TripleSpeedBoost)) as TripleSpeedBoost);
+                    Debug.Log(powerUps[0].getTimer());
                     type = "TripleSpeed";
+                    isBoosting = true;
                     break;
                 default:
                     break;
             }
             hasPowerUp = true;
             other.gameObject.SetActive(false);
-
-            //type = powerUps[0].WhatKind();
-            //Debug.Log(powerUps[0].WhatKind());
-            //if (type == "SingleBoost")
-            //{
-
-            //}
-
-
-
             prefab = GameObject.FindGameObjectWithTag("Holder").GetComponent<PowerUpHolder>().getPrefab(type);
             kartPos = rb.transform.position;
             prefabPos = new Vector3(kartPos.x, kartPos.y - 2, kartPos.z - 1);
             prefab = Instantiate(prefab, prefabPos, Quaternion.identity);
-            //kartPos.x -= 2;
-            //GameObject prefab = powerUps[0].getPrefab();
-
         }
     }
 

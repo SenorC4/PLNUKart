@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SingleSpeedBoost : PowerUpParent
 {
-    public GameObject prefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,15 +16,10 @@ public class SingleSpeedBoost : PowerUpParent
     public override List<float> activate(float acceleration, float topSpeed)
     {
         List<float> result = new List<float>();
-        result.Add(acceleration * 50);
-        result.Add(topSpeed * 2);
+        result.Add(acceleration * 5);
+        result.Add(topSpeed * 3);
         result.Add(charges);
         return result;
         //return acceleration * 100;
-    }
-
-    public override GameObject getPrefab()
-    {
-        return prefab;
     }
 }

@@ -11,7 +11,7 @@ public class MediumKart : KartParent
         setAcceleration(.002f);
         setHandling(7f);
         setTopSpeed(2.5f);
-        GetComponent<Movement>().setStats(getAcceleration(), getTopSpeed(), getHandling());
+        GetComponent<Movement>().setStats(getAcceleration(), getTopSpeed(), getHandling(), false);
         setMovement(GetComponent<Movement>());
     }
 

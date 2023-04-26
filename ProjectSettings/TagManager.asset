@@ -12,6 +12,7 @@ TagManager:
   - checkpoint
   - Yerb
   - Holder
+  - SpeedRamp
   layers:
   - Default
   - TransparentFX

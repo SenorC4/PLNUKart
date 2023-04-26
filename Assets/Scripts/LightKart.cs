@@ -11,7 +11,7 @@ public class LightKart : KartParent
         setAcceleration(.003f);
         setHandling(8f);
         setTopSpeed(2f);
-        GetComponent<Movement>().setStats(getAcceleration(), getTopSpeed(), getHandling());
+        GetComponent<Movement>().setStats(getAcceleration(), getTopSpeed(), getHandling(), false);
         setMovement(GetComponent<Movement>());
     }
 

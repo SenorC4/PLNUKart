@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class PowerUpParent : MonoBehaviour
 {
     public string typeOfPowerUp;
-    public float powerTimer;
+    public float powerTimer = 5;
     public float charges;
     // Start is called before the first frame update
     void Start()
@@ -31,6 +31,5 @@ public abstract class PowerUpParent : MonoBehaviour
         charges--;
     }
 
-    public abstract GameObject getPrefab();
     public abstract List<float> activate(float acceleration, float topSpeed);
 }
