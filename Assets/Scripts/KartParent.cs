@@ -56,15 +56,19 @@ public class KartParent : MonoBehaviour
             {
                 isBoosting = true;
             }
+            resetStats();
             List<float> changedStats = powerUps[0].activate(acceleration, topSpeed);
+            //Debug.Log(acceleration);
             acceleration = changedStats[0];
+            //Debug.Log(acceleration);
+
             topSpeed = changedStats[1];
             charges = changedStats[2];
             powerUps[0].decreaseCharges();
             charges--;
             movement.setStats(acceleration, topSpeed, handling, isBoosting);
             powerUpTimer = powerUps[0].getTimer();
-            Debug.Log(powerUpTimer);
+            //Debug.Log(powerUpTimer);
             if (charges == 0)
             {
                 powerUps.Clear();
@@ -193,8 +197,10 @@ public class KartParent : MonoBehaviour
             hitRamp = true;
             isBoosting = true;
             //Debug.Log(acceleration);
+            Debug.Log(acceleration);
             acceleration = acceleration * 5;
-            topSpeed = topSpeed * 2.5f;
+            Debug.Log(acceleration);
+            topSpeed = topSpeed * 2.75f;
             movement.setStats(acceleration, topSpeed, handling, isBoosting);
             //Debug.Log(acceleration);
             //Debug.Log("Doing!!!");
@@ -209,12 +215,12 @@ public class KartParent : MonoBehaviour
                 case 0: powerUps.Add(gameObject.AddComponent(typeof(SingleSpeedBoost)) as SingleSpeedBoost);
                     Debug.Log(powerUps[0].getTimer());
                     type = "SingleSpeed";
-                    isBoosting = true;
+                    //isBoosting = true;
                     break;
                 case 1: powerUps.Add(gameObject.AddComponent(typeof(TripleSpeedBoost)) as TripleSpeedBoost);
                     Debug.Log(powerUps[0].getTimer());
                     type = "TripleSpeed";
-                    isBoosting = true;
+                    //isBoosting = true;
                     break;
                 default:
                     break;

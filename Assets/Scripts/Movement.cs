@@ -53,8 +53,8 @@ public class Movement : MonoBehaviour
     public void setStats(float acceleration, float topSpeed, float handling, bool isBoosting)
     {
         this.acceleration = acceleration;
-        Debug.Log(this.acceleration);
-        Debug.Log(acceleration);
+        //Debug.Log(this.acceleration);
+        //Debug.Log(acceleration);
         this.topSpeed = topSpeed;
         this.handling = handling;
         this.isBoosting = isBoosting;
