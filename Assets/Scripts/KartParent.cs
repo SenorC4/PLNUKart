@@ -61,6 +61,7 @@ public class KartParent : MonoBehaviour
             {
                 powerUps.Clear();
                 Destroy(prefab);
+                hasPowerUp = false;
             } 
             else if(charges == 2 && type == "TripleSpeed")
             {
@@ -82,7 +83,7 @@ public class KartParent : MonoBehaviour
             {
 
             }
-            hasPowerUp = false;
+            
             usingPowerUp = true;
             Debug.Log("test");
             
