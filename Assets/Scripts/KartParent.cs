@@ -33,8 +33,7 @@ public class KartParent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //powerUps = gameObject.AddComponent<List<PowerUpParent>>();
-        //rb = gameObject.GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -52,15 +51,14 @@ public class KartParent : MonoBehaviour
 
         if (Input.GetKey(KeyCode.E) && powerUps.Count != 0 && usingPowerUp == false)
         {
-            if (type == "TripleSpeed" || type == "SingleSpeedBoost")
+            
+            resetStats();
+            if (type == "TripleSpeed" || type == "SingleSpeed")
             {
                 isBoosting = true;
             }
-            resetStats();
             List<float> changedStats = powerUps[0].activate(acceleration, topSpeed);
-            //Debug.Log(acceleration);
             acceleration = changedStats[0];
-            //Debug.Log(acceleration);
 
             topSpeed = changedStats[1];
             charges = changedStats[2];
@@ -68,7 +66,6 @@ public class KartParent : MonoBehaviour
             charges--;
             movement.setStats(acceleration, topSpeed, handling, isBoosting);
             powerUpTimer = powerUps[0].getTimer();
-            //Debug.Log(powerUpTimer);
             if (charges == 0)
             {
                 powerUps.Clear();
@@ -95,12 +92,8 @@ public class KartParent : MonoBehaviour
             {
 
             }
-            
-            usingPowerUp = true;
-            Debug.Log("test");
-            
+            usingPowerUp = true;    
         }
-        //Debug.Log("test");
 
         if (usingPowerUp == true)
         {
@@ -110,7 +103,6 @@ public class KartParent : MonoBehaviour
 
         if (tempTimer > powerUpTimer)
         {
-            Debug.Log("done");
             resetStats();
             movement.setStats(acceleration, topSpeed, handling, isBoosting);
             tempTimer = 0;
@@ -126,7 +118,6 @@ public class KartParent : MonoBehaviour
                 resetStats();
                 movement.setStats(acceleration, topSpeed, handling, isBoosting);
                 hitRamp = false;
-                //Debug.Log(acceleration);
             }
         }
     }
@@ -194,16 +185,12 @@ public class KartParent : MonoBehaviour
         }
         if (other.gameObject.tag == "SpeedRamp" && hitRamp == false)
         {
+            resetStats();
             hitRamp = true;
             isBoosting = true;
-            //Debug.Log(acceleration);
-            Debug.Log(acceleration);
             acceleration = acceleration * 5;
-            Debug.Log(acceleration);
             topSpeed = topSpeed * 2.75f;
             movement.setStats(acceleration, topSpeed, handling, isBoosting);
-            //Debug.Log(acceleration);
-            //Debug.Log("Doing!!!");
         }
 
         if (other.gameObject.tag == "Block" && hasPowerUp == false)
@@ -215,12 +202,10 @@ public class KartParent : MonoBehaviour
                 case 0: powerUps.Add(gameObject.AddComponent(typeof(SingleSpeedBoost)) as SingleSpeedBoost);
                     Debug.Log(powerUps[0].getTimer());
                     type = "SingleSpeed";
-                    //isBoosting = true;
                     break;
                 case 1: powerUps.Add(gameObject.AddComponent(typeof(TripleSpeedBoost)) as TripleSpeedBoost);
                     Debug.Log(powerUps[0].getTimer());
                     type = "TripleSpeed";
-                    //isBoosting = true;
                     break;
                 default:
                     break;
