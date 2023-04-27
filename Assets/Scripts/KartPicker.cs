@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class KartPicker : MonoBehaviour
 {
@@ -40,8 +41,10 @@ public class KartPicker : MonoBehaviour
                     selected = hit.transform.name;
                 }
         }
-
     }
+
+    
+
 
 
     public static string getSelectedKart(){

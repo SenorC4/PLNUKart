@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     //[SerializeField] private float acceleration = 0.01f;
     //[SerializeField] private float topSpeed = 4f;
     //[SerializeField] private float handling = 20f;
+    [SerializeField] PlayerInput playerInput;
 
     private Rigidbody rb;
     private float currentSpeed = 0f;
@@ -22,22 +23,23 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
+        playerInput = GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxisRaw("Horizontal") != 0)
+        if (playerInput.actions["Move"].ReadValue<Vector2>().x != 0)
         {
-            float change = handling * Mathf.Sign(Input.GetAxisRaw("Horizontal"));
+            float change = handling * Mathf.Sign(playerInput.actions["Move"].ReadValue<Vector2>().x);
             Vector3 euler = new Vector3(0f, change, 0f);
             Quaternion rotation = Quaternion.Euler(euler * Time.fixedDeltaTime);
             rb.MoveRotation(rb.rotation * rotation);
         }
-        if (Input.GetAxisRaw("Vertical") != 0)
+        if (playerInput.actions["Move"].ReadValue<Vector2>().y != 0)
         {
             
-            currentSpeed += acceleration * Mathf.Sign(Input.GetAxisRaw("Vertical"));
+            currentSpeed += acceleration * Mathf.Sign(playerInput.actions["Move"].ReadValue<Vector2>().y);
             if (currentSpeed > topSpeed) currentSpeed = topSpeed;
             if (currentSpeed < -topSpeed / 2) currentSpeed = -topSpeed / 2;
 
