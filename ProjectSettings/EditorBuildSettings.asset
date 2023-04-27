@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/KartPicker.unity
     guid: aa6fc6787478feb4281efe15c527facf
   - enabled: 1
+    path: Assets/Scenes/LanMenu.unity
+    guid: e2b5176437c549c44beff9c26f35ee20
+  - enabled: 1
     path: Assets/Scenes/PLNUSouth.unity
     guid: 05f12be85f04a9c47a56ce60dc5a5fd6
   m_configObjects: {}

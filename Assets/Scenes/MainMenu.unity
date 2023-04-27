@@ -573,7 +573,7 @@ PrefabInstance:
     - target: {fileID: 8518737315447234226, guid: 16a11fa9c0e96624ebea1a8d0ebdb62f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NextScene
+      value: TimeTrial
       objectReference: {fileID: 0}
     - target: {fileID: 8518737315447234226, guid: 16a11fa9c0e96624ebea1a8d0ebdb62f,
         type: 3}
@@ -1154,7 +1154,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PLNU Kart
+  m_text: Loma Kart
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}

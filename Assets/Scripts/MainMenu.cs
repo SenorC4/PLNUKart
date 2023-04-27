@@ -20,19 +20,35 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public void NextScene(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
+    public void TimeTrial(){
+        SceneManager.LoadScene("KartPicker");
+        gameType = "TimeTrial";
     }
 
     public void Split(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneManager.LoadScene("PLNUSouth");
         gameType = "SplitScreen";
     }
 
     public void Lan(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+        SceneManager.LoadScene("LanMenu");
         gameType = "Lan";
+    }
+
+    public void play(){
+        SceneManager.LoadScene("PLNUSouth");
+    }
+
+    public void pick(){
+        SceneManager.LoadScene("KartPicker");
+    }
+
+    public void backToMain(){
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void back(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
     }
 
     public void Quit(){
