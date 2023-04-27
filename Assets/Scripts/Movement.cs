@@ -40,11 +40,21 @@ public class Movement : MonoBehaviour
             currentSpeed += acceleration * Mathf.Sign(Input.GetAxisRaw("Vertical"));
             if (currentSpeed > topSpeed) currentSpeed = topSpeed;
             if (currentSpeed < -topSpeed / 2) currentSpeed = -topSpeed / 2;
+
+            if(isBoosting){
+                gameObject.GetComponent<AudioSource>().pitch = 0.99f;
+            }else{
+                gameObject.GetComponent<AudioSource>().pitch = 0.95f;
+            }
+
         }
         else
         {
             if (currentSpeed > 0) currentSpeed -= acceleration;
             if (currentSpeed < 0) currentSpeed += acceleration;
+
+            gameObject.GetComponent<AudioSource>().pitch = 0.9f;
+            gameObject.GetComponent<AudioSource>().volume = 0.1f;
         }
         rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
         rb.AddForce(rb.transform.forward * currentSpeed, ForceMode.Impulse);
