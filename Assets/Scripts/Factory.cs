@@ -22,6 +22,8 @@ public class Factory : MonoBehaviour
             Camera camer1 = player1.GetComponentInChildren<Camera>();
             Camera camera2 = player2.GetComponentInChildren<Camera>();
 
+            camera2.GetComponent<AudioListener>().enabled = false;
+
             camer1.rect = new Rect(0f,0f,0.5f,1f);
             camera2.rect = new Rect(0.5f,0f,0.5f,1f);
 
