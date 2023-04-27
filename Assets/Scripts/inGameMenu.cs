@@ -21,13 +21,17 @@ public class inGameMenu : MonoBehaviour
     {
         if(playerInput.actions["OpenMenu"].WasPressedThisFrame() && !startMenu.activeSelf){
             startMenu.SetActive(true);
+            Time.timeScale = 0;
+
         }else if(playerInput.actions["OpenMenu"].WasPressedThisFrame() && startMenu.activeSelf){
             startMenu.SetActive(false);
+            Time.timeScale = 1;
         }
     }
 
     public void resume(){
         startMenu.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void Quit(){
