@@ -21,7 +21,7 @@ public class Timer : MonoBehaviour
 
     public void decreaseTime()
     {
-        timer -= 10;
+        timer -= 3;
         if (timer < 0)
         {
             timer = 0;
