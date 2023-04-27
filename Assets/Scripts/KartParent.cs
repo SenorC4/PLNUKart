@@ -42,7 +42,7 @@ public class KartParent : MonoBehaviour
         kartPos = rb.transform.position;
         if (hasPowerUp == true || charges != 0)
         {
-            kartPos.y -= 2;
+            kartPos.y -= 1.8f;
             prefab.transform.position = kartPos;
             prefab.transform.rotation = rb.transform.rotation;
 
@@ -214,7 +214,7 @@ public class KartParent : MonoBehaviour
             other.gameObject.SetActive(false);
             prefab = GameObject.FindGameObjectWithTag("Holder").GetComponent<PowerUpHolder>().getPrefab(type);
             kartPos = rb.transform.position;
-            prefabPos = new Vector3(kartPos.x, kartPos.y - 2, kartPos.z - 1);
+            prefabPos = new Vector3(kartPos.x, kartPos.y - 2, kartPos.z);
             prefab = Instantiate(prefab, prefabPos, Quaternion.identity);
         }
     }
