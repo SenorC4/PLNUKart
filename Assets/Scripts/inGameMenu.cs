@@ -9,6 +9,7 @@ public class inGameMenu : MonoBehaviour
 {
     [SerializeField] PlayerInput playerInput;
     [SerializeField] GameObject startMenu;
+    [SerializeField] GameObject endScreen;
 
     // Start is called before the first frame update
     void Start()

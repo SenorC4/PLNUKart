@@ -6,6 +6,7 @@ public class CheckpointBehavior : MonoBehaviour
 {
     [Header("Attributes")]
     [SerializeField] private int checkNum;
+    [SerializeField] private GameObject endScreen;
 
     private CheckParent cp;
     private MeshRenderer mr;
@@ -26,6 +27,11 @@ public class CheckpointBehavior : MonoBehaviour
     {
         if (cp.getCurrentCheck(p) == checkNum)
         {
+            if(checkNum >= 7){
+                endScreen.SetActive(true);
+                Time.timeScale = 0;
+            }
+
             mr.enabled = false;
             cp.setCurrentCheck(checkNum + 1, p);
             if (cp.getCurrentCheck(p) >= cp.getMax())
@@ -34,6 +40,8 @@ public class CheckpointBehavior : MonoBehaviour
                 cp.setLaps(p);
             }
             Debug.Log("Player" + p + ": Checkpoint " + cp.getCurrentCheck(p));
+
+            
         }
     }
 }
