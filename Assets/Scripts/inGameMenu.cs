@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 
 public class inGameMenu : MonoBehaviour
@@ -11,11 +13,16 @@ public class inGameMenu : MonoBehaviour
     [SerializeField] GameObject startMenu;
     [SerializeField] GameObject endScreen;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
         
+        
     }
+
+    
 
     // Update is called once per frame
     void Update()

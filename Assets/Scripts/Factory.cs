@@ -42,13 +42,6 @@ public class Factory : MonoBehaviour
         }
         }
 
-        
-        
-        
-        
-
-        
-
         Debug.Log("Created");
 
     }

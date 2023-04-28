@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
@@ -18,48 +20,84 @@ public class Movement : MonoBehaviour
     private float currentSpeed = 0f;
     private int playerNum = 1;
     private bool isBoosting = false;
+    private bool started = false;
+
+    public int countDownInt = 3;
+    public TMP_Text countText;
+    public GameObject startCanvas;
 
     // Start is called before the first frame update
     void Start()
     {
+        
+        startCanvas = GameObject.Find("StartCanvas");
+        countText = startCanvas.GetComponentInChildren<TMP_Text>();
+
         rb = gameObject.GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
+
+
+        StartCoroutine(countDown());
+        
+
+
+    }
+
+    IEnumerator countDown(){
+        
+        while(countDownInt > 0){
+            countText.text = countDownInt.ToString();
+
+            yield return new WaitForSeconds(1f);
+
+            countDownInt--;
+
+        }
+
+        countText.text = "GO";
+        started = true;
+
+        yield return new WaitForSeconds(1f);
+        startCanvas.SetActive(false);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerInput.actions["Move"].ReadValue<Vector2>().x != 0)
-        {
-            float change = handling * Mathf.Sign(playerInput.actions["Move"].ReadValue<Vector2>().x);
-            Vector3 euler = new Vector3(0f, change, 0f);
-            Quaternion rotation = Quaternion.Euler(euler * Time.fixedDeltaTime);
-            rb.MoveRotation(rb.rotation * rotation);
-        }
-        if (playerInput.actions["Move"].ReadValue<Vector2>().y != 0)
-        {
-            
-            currentSpeed += acceleration * Mathf.Sign(playerInput.actions["Move"].ReadValue<Vector2>().y);
-            if (currentSpeed > topSpeed) currentSpeed = topSpeed;
-            if (currentSpeed < -topSpeed / 2) currentSpeed = -topSpeed / 2;
-
-            if(isBoosting){
-                gameObject.GetComponent<AudioSource>().pitch = 0.99f;
-            }else{
-                gameObject.GetComponent<AudioSource>().pitch = 0.95f;
+        if(started){
+            if (playerInput.actions["Move"].ReadValue<Vector2>().x != 0)
+            {
+                float change = handling * Mathf.Sign(playerInput.actions["Move"].ReadValue<Vector2>().x);
+                Vector3 euler = new Vector3(0f, change, 0f);
+                Quaternion rotation = Quaternion.Euler(euler * Time.fixedDeltaTime);
+                rb.MoveRotation(rb.rotation * rotation);
             }
+            if (playerInput.actions["Move"].ReadValue<Vector2>().y != 0)
+            {
+                
+                currentSpeed += acceleration * Mathf.Sign(playerInput.actions["Move"].ReadValue<Vector2>().y);
+                if (currentSpeed > topSpeed) currentSpeed = topSpeed;
+                if (currentSpeed < -topSpeed / 2) currentSpeed = -topSpeed / 2;
 
-        }
-        else
-        {
-            if (currentSpeed > 0) currentSpeed -= acceleration;
-            if (currentSpeed < 0) currentSpeed += acceleration;
+                if(isBoosting){
+                    gameObject.GetComponent<AudioSource>().pitch = 0.99f;
+                }else{
+                    gameObject.GetComponent<AudioSource>().pitch = 0.95f;
+                }
 
-            gameObject.GetComponent<AudioSource>().pitch = 0.9f;
-            gameObject.GetComponent<AudioSource>().volume = 0.1f;
+            }
+            else
+            {
+                if (currentSpeed > 0) currentSpeed -= acceleration;
+                if (currentSpeed < 0) currentSpeed += acceleration;
+
+                gameObject.GetComponent<AudioSource>().pitch = 0.9f;
+                gameObject.GetComponent<AudioSource>().volume = 0.1f;
+            }
+            rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+            rb.AddForce(rb.transform.forward * currentSpeed, ForceMode.Impulse);
         }
-        rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
-        rb.AddForce(rb.transform.forward * currentSpeed, ForceMode.Impulse);
     }
 
     public void setStats(float acceleration, float topSpeed, float handling, bool isBoosting)
