@@ -13,6 +13,7 @@ TagManager:
   - Yerb
   - Holder
   - SpeedRamp
+  - Shell
   layers:
   - Default
   - TransparentFX

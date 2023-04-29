@@ -8,7 +8,9 @@ public class PowerUpHolder : MonoBehaviour
     public GameObject yerb;
     public GameObject doubleYerb;
     public GameObject tripleYerb;
-
+    public GameObject SkateBoard;
+    public GameObject DoubleSkateBoard;
+    public GameObject TripleSkateBoard;
 
     public GameObject getPrefab(string type)
     {
@@ -23,6 +25,18 @@ public class PowerUpHolder : MonoBehaviour
         else if (type == "TripleSpeed")
         {
             return tripleYerb;
+        }
+        else if (type == "SingleShell")
+        {
+            return SkateBoard;
+        }
+        else if (type == "DoubleShell")
+        {
+            return DoubleSkateBoard;
+        }
+        else if (type == "TripleShell")
+        {
+            return TripleSkateBoard;
         }
         return yerb;
     }

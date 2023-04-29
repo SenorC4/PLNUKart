@@ -21,6 +21,7 @@ public class KartParent : MonoBehaviour
     private List<PowerUpParent> powerUps;
     private Movement movement;
     public Rigidbody rb;
+    public Transform frontEnd;
     private GameObject prefab;
     bool createdTopSpeed = false, createdAcceleration = false, createdHandling = false;
     bool hasPowerUp = false, usingPowerUp = false;
@@ -51,21 +52,30 @@ public class KartParent : MonoBehaviour
 
         if (Input.GetKey(KeyCode.E) && powerUps.Count != 0 && usingPowerUp == false)
         {
-            
-            resetStats();
-            if (type == "TripleSpeed" || type == "SingleSpeed")
-            {
-                isBoosting = true;
-            }
+
+
             List<float> changedStats = powerUps[0].activate(acceleration, topSpeed);
             acceleration = changedStats[0];
-
             topSpeed = changedStats[1];
             charges = changedStats[2];
+
+            if (type == "TripleSpeed" || type == "SingleSpeed")
+            {
+                resetStats();
+                isBoosting = true; 
+                movement.setStats(acceleration, topSpeed, handling, isBoosting);
+            }
+
+            else if (type == "TripleShell" || type == "SingleShell")
+            {
+                GameObject singlePrefab = GameObject.FindGameObjectWithTag("Holder").GetComponent<PowerUpHolder>().getPrefab("SingleShell");
+                GameObject firingPrefab = Instantiate(singlePrefab, frontEnd.position, frontEnd.rotation);
+                firingPrefab.GetComponent<Rigidbody>().AddForce(transform.forward * 1000);
+            }
+
+            powerUpTimer = powerUps[0].getTimer();
             powerUps[0].decreaseCharges();
             charges--;
-            movement.setStats(acceleration, topSpeed, handling, isBoosting);
-            powerUpTimer = powerUps[0].getTimer();
             if (charges == 0)
             {
                 powerUps.Clear();
@@ -80,7 +90,9 @@ public class KartParent : MonoBehaviour
             }
             else if (charges == 2 && type == "TripleShell")
             {
-
+                Destroy(prefab);
+                prefab = GameObject.FindGameObjectWithTag("Holder").GetComponent<PowerUpHolder>().getPrefab("DoubleShell");
+                prefab = Instantiate(prefab, kartPos, Quaternion.identity);
             }
             else if (charges == 1 && type == "TripleSpeed")
             {
@@ -90,7 +102,9 @@ public class KartParent : MonoBehaviour
             }
             else if (charges == 1 && type == "TripleShell")
             {
-
+                Destroy(prefab);
+                prefab = GameObject.FindGameObjectWithTag("Holder").GetComponent<PowerUpHolder>().getPrefab("SingleShell");
+                prefab = Instantiate(prefab, kartPos, Quaternion.identity);
             }
             usingPowerUp = true;    
         }
@@ -177,6 +191,11 @@ public class KartParent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "Shell")
+        {
+            other.gameObject.SetActive(false);
+            hit();
+        }
         if (other.gameObject.tag == "StopWatch") 
         {
             time = GameObject.FindGameObjectWithTag("Timer").GetComponent<Timer>();
@@ -196,16 +215,42 @@ public class KartParent : MonoBehaviour
         if (other.gameObject.tag == "Block" && hasPowerUp == false)
         {
             powerUps = new List<PowerUpParent>();
-            int range = Random.Range(0, 2);
+            int range = Random.Range(0, 4);
             switch (range)
             {
-                case 0: powerUps.Add(gameObject.AddComponent(typeof(SingleSpeedBoost)) as SingleSpeedBoost);
-                    Debug.Log(powerUps[0].getTimer());
+                case 0: 
+                    powerUps.Add(gameObject.AddComponent(typeof(SingleSpeedBoost)) as SingleSpeedBoost);
+                    //Debug.Log(powerUps[0].getTimer());
                     type = "SingleSpeed";
                     break;
-                case 1: powerUps.Add(gameObject.AddComponent(typeof(TripleSpeedBoost)) as TripleSpeedBoost);
-                    Debug.Log(powerUps[0].getTimer());
+                case 1: 
+                    powerUps.Add(gameObject.AddComponent(typeof(TripleSpeedBoost)) as TripleSpeedBoost);
+                    //Debug.Log(powerUps[0].getTimer());
                     type = "TripleSpeed";
+                    break;
+                case 2:
+                    if (MainMenu.getGameType() != "TimeTrial")
+                    {
+                        powerUps.Add(gameObject.AddComponent(typeof(SingleShell)) as SingleShell);
+                        type = "SingleShell";
+                    }
+                    else
+                    {
+                        powerUps.Add(gameObject.AddComponent(typeof(SingleSpeedBoost)) as SingleSpeedBoost);
+                        type = "SingleSpeed";
+                    }
+                    break;
+                case 3:
+                    if (MainMenu.getGameType() != "TimeTrial")
+                    {
+                        powerUps.Add(gameObject.AddComponent(typeof(TripleShell)) as TripleShell);
+                        type = "TripleShell";
+                    }
+                    else
+                    {
+                        powerUps.Add(gameObject.AddComponent(typeof(TripleSpeedBoost)) as TripleSpeedBoost);
+                        type = "TripleSpeed";
+                    }
                     break;
                 default:
                     break;
@@ -222,6 +267,11 @@ public class KartParent : MonoBehaviour
     public void setMovement(Movement movement)
     {
         this.movement = movement;
+    }
+
+    public void hit()
+    {
+            rb.AddForce(Random.Range(-1000, 1000), Random.Range(0, 1000), Random.Range(-1000, 1000));
     }
 
 }

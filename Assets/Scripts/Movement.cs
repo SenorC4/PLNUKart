@@ -76,7 +76,7 @@ public class Movement : MonoBehaviour
             if (playerInput.actions["Move"].ReadValue<Vector2>().y != 0)
             {
                 
-                currentSpeed += 30 * Time.deltaTime * acceleration * Mathf.Sign(playerInput.actions["Move"].ReadValue<Vector2>().y);
+                currentSpeed += 60 * Time.deltaTime * acceleration * Mathf.Sign(playerInput.actions["Move"].ReadValue<Vector2>().y);
                 if (currentSpeed > topSpeed) currentSpeed = topSpeed;
                 if (currentSpeed < -topSpeed / 2) currentSpeed = -topSpeed / 2;
 

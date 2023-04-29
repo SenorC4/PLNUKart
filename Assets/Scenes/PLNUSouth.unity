@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6499,6 +6499,12 @@ MonoBehaviour:
   doubleYerb: {fileID: 830301484365642211, guid: f4d7a4b5808f74349875462702c7cf8f,
     type: 3}
   tripleYerb: {fileID: 6373723442665232986, guid: 6c33fcb7701386241b6226ae94968f01,
+    type: 3}
+  SkateBoard: {fileID: 3647600569157919949, guid: b7fd1f3bb3131694fada5c6f07b81175,
+    type: 3}
+  DoubleSkateBoard: {fileID: 1700972099994534009, guid: b1bf663dfe24d924189ab98bd307eb4c,
+    type: 3}
+  TripleSkateBoard: {fileID: 3700226643465255863, guid: a091c157945f2ee48b00c07388fe55ec,
     type: 3}
 --- !u!114 &1812952814
 MonoBehaviour:
