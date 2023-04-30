@@ -18,6 +18,7 @@ public class KartPicker : MonoBehaviour
     public Vector3 rotation;
 
     private static string selected;
+    private static string selected2;
 
     // Start is called before the first frame update
     void Start()
@@ -36,8 +37,11 @@ public class KartPicker : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) {
                 RaycastHit  hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit)) {
+                if (Physics.Raycast(ray, out hit) && (hit.transform.name).Contains("2")) {
                     Debug.Log( hit.transform.name);
+                    selected2 = hit.transform.name;
+                }else if(Physics.Raycast(ray, out hit)){
+                    Debug.Log( hit.transform.name + "single");
                     selected = hit.transform.name;
                 }
         }
@@ -49,5 +53,9 @@ public class KartPicker : MonoBehaviour
 
     public static string getSelectedKart(){
         return selected;
+    }
+
+    public static string getSelectedKart2(){
+        return selected2;
     }
 }

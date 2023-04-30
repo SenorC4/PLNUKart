@@ -66,7 +66,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
         if(started){
-            if (playerInput.actions["Move"].ReadValue<Vector2>().x != 0)
+            if (playerInput.actions["Move"].ReadValue<Vector2>().x >0.2f || playerInput.actions["Move"].ReadValue<Vector2>().x <-0.2f)
             {
                 float change = handling * Mathf.Sign(playerInput.actions["Move"].ReadValue<Vector2>().x);
                 Vector3 euler = new Vector3(0f, change, 0f);

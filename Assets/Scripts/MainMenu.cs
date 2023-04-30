@@ -43,6 +43,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("KartPicker");
     }
 
+    public void splitPick(){
+        SceneManager.LoadScene("SplitKartPicker");
+    }
+
+
     public void backToMain(){
         SceneManager.LoadScene("MainMenu");
     }

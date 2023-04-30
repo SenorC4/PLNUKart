@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MediumKart : KartParent
 {
+    PlayerInput pi;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
+        pi = gameObject.GetComponent<PlayerInput>();
         setAcceleration(.002f);
         setHandling(7f);
         setTopSpeed(2.5f);
@@ -19,6 +23,6 @@ public class MediumKart : KartParent
     void Update()
     {
         //Debug.Log("test");
-        base.Update();
+        base.Update(pi);
     }
 }

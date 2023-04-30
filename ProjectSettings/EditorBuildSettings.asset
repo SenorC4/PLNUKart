@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/KartPicker.unity
     guid: aa6fc6787478feb4281efe15c527facf
   - enabled: 1
+    path: Assets/Scenes/SplitKartPicker.unity
+    guid: f559a22bc3dbd89428658dabfae4eff1
+  - enabled: 1
     path: Assets/Scenes/LanMenu.unity
     guid: e2b5176437c549c44beff9c26f35ee20
   - enabled: 1

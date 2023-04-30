@@ -7,15 +7,37 @@ public class Factory : MonoBehaviour
     public GameObject LightKart;
     public GameObject MediumKart;
     public GameObject HeavyKart;
+    public GameObject player1;
+    public GameObject player2;
 
     // Start is called before the first frame update
     void Start()
     {
         bool testing = true;
         if(MainMenu.getGameType() == "SplitScreen"){
-            GameObject player1 = (GameObject)Instantiate(MediumKart, new Vector3(-1, 2.7f, 0), Quaternion.identity);
-            GameObject player2 = (GameObject)Instantiate(MediumKart, new Vector3(1, 2.7f, 0), Quaternion.identity);
+            //GameObject player1 = (GameObject)Instantiate(MediumKart, new Vector3(-1, 2.7f, 0), Quaternion.identity);
+            //GameObject player2 = (GameObject)Instantiate(MediumKart, new Vector3(1, 2.7f, 0), Quaternion.identity);
 
+            if("LightKart" == KartPicker.getSelectedKart()){
+                player1 = (GameObject)Instantiate(LightKart, new Vector3(-1, 2.44f, 0), Quaternion.identity);
+            }else if("MediumKart" == KartPicker.getSelectedKart()){
+                player1 = (GameObject)Instantiate(MediumKart, new Vector3(-1, 2.7f, 0), Quaternion.identity);
+            }else if("HeavyKart" == KartPicker.getSelectedKart()){
+                player1 = (GameObject)Instantiate(HeavyKart, new Vector3(-1, 3.1f, 0), Quaternion.identity);
+            }
+
+
+            if("LightKart2" == KartPicker.getSelectedKart2()){
+                player2 = (GameObject)Instantiate(LightKart, new Vector3(1, 2.44f, 0), Quaternion.identity);
+            }else if("MediumKart2" == KartPicker.getSelectedKart2()){
+                player2 = (GameObject)Instantiate(MediumKart, new Vector3(1, 2.7f, 0), Quaternion.identity);
+            }else if("HeavyKart2" == KartPicker.getSelectedKart2()){
+                player2 = (GameObject)Instantiate(HeavyKart, new Vector3(1, 3.1f, 0), Quaternion.identity);
+            }
+            
+            
+            
+            
             Transform cameraTransform = player1.transform.Find("Main Camera");
             Transform cameraTransform2 = player2.transform.Find("Main Camera");
 
@@ -30,14 +52,14 @@ public class Factory : MonoBehaviour
 
         }else{
             if("LightKart" == KartPicker.getSelectedKart()){
-                Instantiate(LightKart, new Vector3(0, 2.44f, 0), Quaternion.identity);
+                player1 = Instantiate(LightKart, new Vector3(0, 2.44f, 0), Quaternion.identity);
             }else if("MediumKart" == KartPicker.getSelectedKart()){
-                Instantiate(MediumKart, new Vector3(0, 2.7f, 0), Quaternion.identity);
+                player1 = Instantiate(MediumKart, new Vector3(0, 2.7f, 0), Quaternion.identity);
             }else if("HeavyKart" == KartPicker.getSelectedKart()){
-                Instantiate(HeavyKart, new Vector3(0, 3.1f, 0), Quaternion.identity);
+                player1 = Instantiate(HeavyKart, new Vector3(0, 3.1f, 0), Quaternion.identity);
 
             }else if(testing){
-                Instantiate(MediumKart, new Vector3(0, 2.7f, 0), Quaternion.identity);
+                player1 = Instantiate(MediumKart, new Vector3(0, 2.7f, 0), Quaternion.identity);
             Debug.Log("error, no kart selected");
         }
         }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class KartParent : MonoBehaviour
 {
@@ -32,17 +33,19 @@ public class KartParent : MonoBehaviour
     private float rampTimer = 5;
     private float tempRampTimer = 0;
 
+    private PlayerInput playerInput;
+
 
     // Start is called before the first frame update
     void Start()
     {
-
+        //playerInput = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
-    public void Update()
+    public void Update(PlayerInput pi)
     {
-
+        //playerInput = prefab.GetComponent<PlayerInput>();
         if (isHit == true)
         {
             tempHitTime += Time.deltaTime;
@@ -67,8 +70,9 @@ public class KartParent : MonoBehaviour
 
         }
 
-
-        if (Input.GetKey(KeyCode.E) && powerUps.Count != 0 && usingPowerUp == false)
+        //(Input.GetKey(KeyCode.E) || Gamepad.current.buttonWest.wasPressedThisFrame)
+        //pi.actions["Use"].WasPressedThisFrame();
+        if (pi.actions["Use"].WasPressedThisFrame() && powerUps.Count != 0 && usingPowerUp == false)
         {
 
 
