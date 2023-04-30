@@ -238,7 +238,7 @@ public class KartParent : MonoBehaviour
         {
             powerUps = new List<PowerUpParent>();
             int range = Random.Range(0, 4);
-            range = 3;
+            //range = 3;
             switch (range)
             {
                 case 0: 
