@@ -23,12 +23,14 @@ public class KartParent : MonoBehaviour
     public Rigidbody rb;
     public Transform frontEnd;
     private GameObject prefab;
-    bool createdTopSpeed = false, createdAcceleration = false, createdHandling = false;
-    bool hasPowerUp = false, usingPowerUp = false;
-    bool isBoosting = false;
-    bool hitRamp = false;
-    float rampTimer = 5;
-    float tempRampTimer = 0;
+    private bool createdTopSpeed = false, createdAcceleration = false, createdHandling = false;
+    private bool hasPowerUp = false, usingPowerUp = false;
+    private bool isBoosting = false;
+    private bool hitRamp = false;
+    private bool isHit = false;
+    private float hitTime = 0, tempHitTime = 0;
+    private float rampTimer = 5;
+    private float tempRampTimer = 0;
 
 
     // Start is called before the first frame update
@@ -40,6 +42,22 @@ public class KartParent : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+
+        if (isHit == true)
+        {
+            tempHitTime += Time.deltaTime;
+            movement.setStats(0, 0, 0, false);
+        }
+
+        if (tempHitTime > hitTime)
+        {
+            tempHitTime = 0;
+            isHit = false;
+            resetStats();
+            movement.setStats(acceleration, topSpeed, handling, isBoosting);
+        }
+
+
         kartPos = rb.transform.position;
         if (hasPowerUp == true || charges != 0)
         {
@@ -216,6 +234,7 @@ public class KartParent : MonoBehaviour
         {
             powerUps = new List<PowerUpParent>();
             int range = Random.Range(0, 4);
+            range = 3;
             switch (range)
             {
                 case 0: 
@@ -271,7 +290,9 @@ public class KartParent : MonoBehaviour
 
     public void hit()
     {
-            rb.AddForce(Random.Range(-1000, 1000), Random.Range(0, 1000), Random.Range(-1000, 1000));
+        rb.AddForce(0, 500, 0);
+        isHit = true;
+        hitTime = 2;
     }
 
 }
