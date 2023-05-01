@@ -115,16 +115,16 @@ public class Movement : MonoBehaviour
         {
             if (isBoosting == false)
             {
-                acceleration = 0.005f;
-                topSpeed = 2f;
+                //acceleration = 0.005f;
+                //topSpeed = 2f;
             }
         }
         if (collision.gameObject.tag == "road")
         {
             if (isBoosting == false)
             {
-                acceleration = 0.01f;
-                topSpeed = 4f;
+                //acceleration = 0.01f;
+                //topSpeed = 4f;
             }
         }
     }
