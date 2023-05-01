@@ -83,9 +83,12 @@ public class KartParent : MonoBehaviour
 
             if (type == "TripleSpeed" || type == "SingleSpeed")
             {
-                resetStats();
-                isBoosting = true; 
-                movement.setStats(acceleration, topSpeed, handling, isBoosting);
+                //resetStats();
+                isBoosting = true;
+                if (hitRamp == false)
+                {
+                    movement.setStats(acceleration, topSpeed, handling, isBoosting);
+                }
             }
 
             else if (type == "TripleShell" || type == "SingleShell")
