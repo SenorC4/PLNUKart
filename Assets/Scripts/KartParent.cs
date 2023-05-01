@@ -46,7 +46,7 @@ public class KartParent : MonoBehaviour
     // Update is called once per frame
     public void Update(PlayerInput pi)
     {
-        Debug.Log(acceleration);
+        //Debug.Log(acceleration);
         //playerInput = prefab.GetComponent<PlayerInput>();
         if (isHit == true)
         {

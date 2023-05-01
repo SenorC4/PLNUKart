@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -20,52 +21,58 @@ public class Movement : MonoBehaviour
     private float currentSpeed = 0f;
     private int playerNum = 1;
     private bool isBoosting = false;
-    private bool started = false;
+    public bool started = false;
 
     public int countDownInt = 3;
     public TMP_Text countText;
     public GameObject startCanvas;
+    private float startTime = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+
+    }
+
+    private void Awake(){
+
         Application.targetFrameRate = 100;
         startCanvas = GameObject.Find("StartCanvas");
+        startCanvas.SetActive(true);
+
         countText = startCanvas.GetComponentInChildren<TMP_Text>();
 
         rb = gameObject.GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
 
-
-        StartCoroutine(countDown());
-        
-
-
     }
 
-    IEnumerator countDown(){
-        
-        while(countDownInt > 0){
-            countText.text = countDownInt.ToString();
-
-            yield return new WaitForSeconds(1f);
-
-            countDownInt--;
-
-        }
-
-        countText.text = "GO";
-        started = true;
-
-        yield return new WaitForSeconds(1f);
-        startCanvas.SetActive(false);
-        
+    private void OnEnable(){
+        started = false;
+        startTime = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(!started && Time.time - startTime > 1){
+            
+            if(countDownInt >= 1){
+                countText.text = countDownInt.ToString();
+                countDownInt--;
+            }else if(countDownInt == 0){
+                countText.text = "GO";
+                started = true;
+                //startCanvas.SetActive(false);
+            }
+            startTime = Time.time;
+        }
         if(started){
+
+            if(startCanvas.activeSelf && Time.time - startTime > 1){
+                startCanvas.SetActive(false);
+            }
+            
             if (playerInput.actions["Move"].ReadValue<Vector2>().x >0.2f || playerInput.actions["Move"].ReadValue<Vector2>().x <-0.2f)
             {
                 float change = handling * Mathf.Sign(playerInput.actions["Move"].ReadValue<Vector2>().x);
