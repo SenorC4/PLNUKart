@@ -13,8 +13,8 @@ public class MediumKart : KartParent
         rb = gameObject.GetComponent<Rigidbody>();
         pi = gameObject.GetComponent<PlayerInput>();
         setAcceleration(.002f);
-        setHandling(7f);
-        setTopSpeed(2.5f);
+        setHandling(10f);
+        setTopSpeed(5f);
         GetComponent<Movement>().setStats(getAcceleration(), getTopSpeed(), getHandling(), false);
         setMovement(GetComponent<Movement>());
     }
