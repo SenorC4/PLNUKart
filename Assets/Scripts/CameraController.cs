@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 public class CameraController : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         originalPos = transform.localPosition;
+
+        //if(){
+
+        //}
     }
 
     // Update is called once per frame

@@ -53,7 +53,7 @@ public class Movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(!started && Time.time - startTime > 1){
             
