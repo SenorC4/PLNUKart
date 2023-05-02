@@ -48,6 +48,15 @@ public class Factory : MonoBehaviour
 
             camer1.rect = new Rect(0f,0f,0.5f,1f);
             camera2.rect = new Rect(0.5f,0f,0.5f,1f);
+        }else if(MainMenu.getGameType() == "Lan"){
+            if("LightKart" == KartPicker.getSelectedKart()){
+                player1 = (GameObject)Instantiate(LightKart, new Vector3(-1, 2.44f, 0), Quaternion.identity);
+            }else if("MediumKart" == KartPicker.getSelectedKart()){
+                player2 = (GameObject)Instantiate(MediumKart, new Vector3(1, 2.7f, 0), Quaternion.identity);
+            }else if("HeavyKart" == KartPicker.getSelectedKart()){
+                player2 = (GameObject)Instantiate(HeavyKart, new Vector3(0, 3.1f, 0), Quaternion.identity);
+            }
+
 
 
         }else{
@@ -61,7 +70,7 @@ public class Factory : MonoBehaviour
             }else if(testing){
                 player1 = Instantiate(MediumKart, new Vector3(0, 2.7f, 0), Quaternion.identity);
             Debug.Log("error, no kart selected");
-        }
+            }
         }
 
         Debug.Log("Created");
