@@ -25,7 +25,7 @@ public class Factory : MonoBehaviour
             }else if("HeavyKart" == KartPicker.getSelectedKart()){
                 player1 = (GameObject)Instantiate(HeavyKart, new Vector3(-1, 3.1f, 0), Quaternion.identity);
             }
-
+            player1.tag = "player1";
 
             if("LightKart2" == KartPicker.getSelectedKart2()){
                 player2 = (GameObject)Instantiate(LightKart, new Vector3(1, 2.44f, 0), Quaternion.identity);
@@ -34,7 +34,7 @@ public class Factory : MonoBehaviour
             }else if("HeavyKart2" == KartPicker.getSelectedKart2()){
                 player2 = (GameObject)Instantiate(HeavyKart, new Vector3(1, 3.1f, 0), Quaternion.identity);
             }
-            
+            player2.tag = "player2";
             
             
             
@@ -60,8 +60,11 @@ public class Factory : MonoBehaviour
 
             }else if(testing){
                 player1 = Instantiate(MediumKart, new Vector3(0, 2.7f, 0), Quaternion.identity);
+
+                
             Debug.Log("error, no kart selected");
-        }
+            }
+            player1.tag = "player1";
         }
 
         Debug.Log("Created");

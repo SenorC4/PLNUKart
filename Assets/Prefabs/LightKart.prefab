@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 1086249866894246514}
   - component: {fileID: 6309697498484032790}
   - component: {fileID: 4852915682931314833}
+  - component: {fileID: 1481819625026162627}
   m_Layer: 0
   m_Name: lap
   m_TagString: Untagged
@@ -166,6 +167,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1481819625026162627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2183266495468754459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ced7f1b02395a641890fb6b03cef93a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4025466360352088981
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,6 +293,7 @@ GameObject:
   - component: {fileID: 9015438929041837402}
   - component: {fileID: 2980271112451909238}
   - component: {fileID: 8586144863149301856}
+  - component: {fileID: 1065342847923107189}
   m_Layer: 0
   m_Name: Check
   m_TagString: Untagged
@@ -404,6 +418,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1065342847923107189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6749741517267009523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df59e81c5fecae4d93efec4f44a1168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7044873944696473369
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +441,7 @@ GameObject:
   - component: {fileID: 1252821776074521235}
   - component: {fileID: 4868779866175002394}
   - component: {fileID: 782967220188648547}
+  - component: {fileID: 6865308600783364190}
   m_Layer: 0
   m_Name: place
   m_TagString: Untagged
@@ -539,6 +566,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6865308600783364190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7044873944696473369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b058b564c125e8944b52dd3bdd064f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7607641991390229086
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,7 +2058,7 @@ GameObject:
   - component: {fileID: 8465016211687697036}
   m_Layer: 0
   m_Name: LightKart
-  m_TagString: Player
+  m_TagString: player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

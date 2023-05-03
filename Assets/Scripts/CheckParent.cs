@@ -15,6 +15,7 @@ public class CheckParent : MonoBehaviour
     private void Start()
     {
         maxChecks = GameObject.FindGameObjectsWithTag("checkpoint").Length;
+
     }
 
     public int getCurrentCheck(int p)
@@ -36,8 +37,8 @@ public class CheckParent : MonoBehaviour
     {
         switch(p)
         {
-            case 1: p1currentCheck = c; break;
-            case 2: p2currentCheck = c; break;
+            case 1: p1currentCheck = c; GameObject.FindGameObjectWithTag("player1").GetComponent<Movement>().setCurrentCheck(p1currentCheck); break;
+            case 2: p2currentCheck = c; GameObject.FindGameObjectWithTag("player2").GetComponent<Movement>().setCurrentCheck(p2currentCheck); break;
         }
         
     }
@@ -56,8 +57,8 @@ public class CheckParent : MonoBehaviour
     {
         switch(p)
         {
-            case 1: p1Laps++; Debug.Log("Player 1 Laps: " + p1Laps); break;
-            case 2: p2Laps++; Debug.Log("Player 2 Laps: " + p2Laps); break;
+            case 1: p1Laps++; GameObject.FindGameObjectWithTag("player1").GetComponent<Movement>().setLaps(p1Laps); break;
+            case 2: p2Laps++; GameObject.FindGameObjectWithTag("player2").GetComponent<Movement>().setLaps(p2Laps); break;
         }
     }
 }

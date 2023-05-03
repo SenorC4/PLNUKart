@@ -145,9 +145,10 @@ GameObject:
   - component: {fileID: 5750210608832594817}
   - component: {fileID: 9222042651963985186}
   - component: {fileID: 6694018102203422633}
+  - component: {fileID: 512795944618553257}
   m_Layer: 0
   m_Name: place
-  m_TagString: Untagged
+  m_TagString: Position
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -269,6 +270,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &512795944618553257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7369395980326622678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b058b564c125e8944b52dd3bdd064f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7607641991390229086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,7 +1762,7 @@ GameObject:
   - component: {fileID: 2670975908663772617}
   m_Layer: 0
   m_Name: HeavyKart
-  m_TagString: Player
+  m_TagString: player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3028,9 +3041,10 @@ GameObject:
   - component: {fileID: 8792930512492327040}
   - component: {fileID: 1157105169501625890}
   - component: {fileID: 3440462707361761181}
+  - component: {fileID: 3194603786565347540}
   m_Layer: 0
   m_Name: lap
-  m_TagString: Untagged
+  m_TagString: Lap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3152,6 +3166,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3194603786565347540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8698534223226559843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ced7f1b02395a641890fb6b03cef93a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8738891502453874177
 GameObject:
   m_ObjectHideFlags: 0
@@ -3163,9 +3189,10 @@ GameObject:
   - component: {fileID: 1063716473338351637}
   - component: {fileID: 7504617237164596174}
   - component: {fileID: 2490070385202818414}
+  - component: {fileID: 2718507875325094223}
   m_Layer: 0
   m_Name: Check
-  m_TagString: Untagged
+  m_TagString: Check
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3178,7 +3205,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8738891502453874177}
   m_LocalRotation: {x: -0, y: 0.000000059604638, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3187,7 +3214,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 284, y: 58}
+  m_AnchoredPosition: {x: 290, y: 58}
   m_SizeDelta: {x: 500, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7504617237164596174
@@ -3287,3 +3314,15 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2718507875325094223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8738891502453874177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df59e81c5fecae4d93efec4f44a1168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -26,9 +26,21 @@ public class Movement : MonoBehaviour
     public TMP_Text countText;
     public GameObject startCanvas;
 
+    private CheckScript cs;
+    private LapScript ls;
+    private PositionScript ps;
+
+    private int laps = 0;
+    private int currentCheck = 0;
+    private string position = "1st";
+
     // Start is called before the first frame update
     void Start()
     {
+        cs = gameObject.GetComponentInChildren<CheckScript>();
+        ls = gameObject.GetComponentInChildren<LapScript>();
+        ps = gameObject.GetComponentInChildren<PositionScript>();
+
         Application.targetFrameRate = 100;
         startCanvas = GameObject.Find("StartCanvas");
         countText = startCanvas.GetComponentInChildren<TMP_Text>();
@@ -65,6 +77,9 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        cs.setCheckNum(currentCheck);
+        ls.setLapNum(laps+1);
+        ps.setPositionNum(position);
         if(started){
             if (playerInput.actions["Move"].ReadValue<Vector2>().x >0.2f || playerInput.actions["Move"].ReadValue<Vector2>().x <-0.2f)
             {
@@ -140,5 +155,15 @@ public class Movement : MonoBehaviour
         {
             other.gameObject.GetComponent<CheckpointBehavior>().checkHit(playerNum);
         }
+    }
+
+    public void setLaps(int l)
+    {
+        laps = l;
+    }
+
+    public void setCurrentCheck(int c)
+    {
+        currentCheck = c;
     }
 }
