@@ -17,10 +17,29 @@ public class PositionScript : MonoBehaviour
     void Update()
     {
         t.text = positionNum;
+
+        if(gameObject.transform.parent.transform.parent.transform.parent.tag == "player1"){
+            if(CheckParent.getFirst() == 1){
+                setPositionNum("1st");
+            }else{
+                setPositionNum("2nd");
+            }
+        }
+        if(gameObject.transform.parent.transform.parent.transform.parent.tag == "player2"){
+            if(CheckParent.getFirst() == 2){
+                setPositionNum("1st");
+            }else{
+                setPositionNum("2nd");
+            }
+        }else{
+            Debug.Log("no");
+        }
+
     }
 
     public void setPositionNum(string p)
     {
         positionNum = p;
+        t.text = p;
     }
 }

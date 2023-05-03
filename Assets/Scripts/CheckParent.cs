@@ -12,6 +12,9 @@ public class CheckParent : MonoBehaviour
     private int p1Laps = 0;
     private int p2Laps = 0;
 
+
+    private static int first = 0;
+
     private void Start()
     {
         maxChecks = GameObject.FindGameObjectsWithTag("checkpoint").Length;
@@ -40,7 +43,17 @@ public class CheckParent : MonoBehaviour
             case 1: p1currentCheck = c; GameObject.FindGameObjectWithTag("player1").GetComponent<Movement>().setCurrentCheck(p1currentCheck); break;
             case 2: p2currentCheck = c; GameObject.FindGameObjectWithTag("player2").GetComponent<Movement>().setCurrentCheck(p2currentCheck); break;
         }
+
+        if(p1currentCheck > p2currentCheck && p1Laps >= p2Laps){
+            first = 1;
+        }else{
+            first = 2;
+        }
         
+    }
+
+    public static int getFirst(){
+        return first;
     }
 
     public int getLaps(int p)

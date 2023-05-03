@@ -35,6 +35,7 @@ public class Movement : MonoBehaviour
     private int laps = 0;
     private int currentCheck = 0;
     private string position = "1st";
+    private string positon2 = "2nd";
 
     // Start is called before the first frame update
     void Start()
