@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CheckpointBehavior : MonoBehaviour
 {
     [Header("Attributes")]
     [SerializeField] private int checkNum;
     [SerializeField] private GameObject endScreen;
+
+    [SerializeField] private TMP_Text end1;
+    [SerializeField] private TMP_Text end2;
 
     private CheckParent cp;
     private MeshRenderer mr;
@@ -15,6 +19,7 @@ public class CheckpointBehavior : MonoBehaviour
     {
         cp = gameObject.GetComponentInParent<CheckParent>();
         mr = gameObject.GetComponent<MeshRenderer>();
+        
         //mr.forceRenderingOff = true;
     }
 
@@ -31,11 +36,24 @@ public class CheckpointBehavior : MonoBehaviour
 
             //mr.enabled = false;
             cp.setCurrentCheck(checkNum + 1, p);
+
+            
+
             if (cp.getCurrentCheck(p) >= cp.getMax())
             {
                 cp.setCurrentCheck(0, p);
                 cp.setLaps(p);
-                if(cp.getLaps(p) >= 2){
+
+                if(cp.getLaps(p) > 1){
+                    if(MainMenu.getGameType() == "SplitScreen"){
+                        if(p == 1){
+                           end2.text = "2nd";
+                           end2.color = Color.gray;
+                        }else{
+                            end1.text = "2nd";
+                            end1.color = Color.gray;
+                        }
+                    }
                     endScreen.SetActive(true);
                     Time.timeScale = 0;
                 }

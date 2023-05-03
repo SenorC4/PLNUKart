@@ -24,8 +24,7 @@ public class PositionScript : MonoBehaviour
             }else{
                 setPositionNum("2nd");
             }
-        }
-        if(gameObject.transform.parent.transform.parent.transform.parent.tag == "player2"){
+        }else if(gameObject.transform.parent.transform.parent.transform.parent.tag == "player2"){
             if(CheckParent.getFirst() == 2){
                 setPositionNum("1st");
             }else{

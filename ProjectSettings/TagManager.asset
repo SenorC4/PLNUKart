@@ -19,6 +19,8 @@ TagManager:
   - Position
   - player1
   - player2
+  - EndScreen
+  - EndScreen2
   layers:
   - Default
   - TransparentFX
