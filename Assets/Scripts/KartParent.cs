@@ -40,11 +40,13 @@ public class KartParent : MonoBehaviour
     void Start()
     {
         //playerInput = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
+        
     }
 
     // Update is called once per frame
     public void Update(PlayerInput pi)
     {
+        //Debug.Log(acceleration);
         //playerInput = prefab.GetComponent<PlayerInput>();
         if (isHit == true)
         {
@@ -232,8 +234,8 @@ public class KartParent : MonoBehaviour
             resetStats();
             hitRamp = true;
             isBoosting = true;
-            acceleration = acceleration * 5;
-            topSpeed = topSpeed * 2.75f;
+            acceleration = acceleration * 3;
+            topSpeed = topSpeed * 1.5f;
             movement.setStats(acceleration, topSpeed, handling, isBoosting);
         }
 

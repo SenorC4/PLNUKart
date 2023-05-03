@@ -31,12 +31,25 @@ public class MainMenu : MonoBehaviour
     }
 
     public void Lan(){
-        SceneManager.LoadScene("LanMenu");
+        SceneManager.LoadScene("KartPicker");
         gameType = "Lan";
     }
 
-    public void play(){
+    public void LanMenu(){
+        SceneManager.LoadScene("LanMenu");
+    }
+
+    public void map(){
         SceneManager.LoadScene("PLNUSouth");
+    }
+
+    public void play(){
+        if(gameType == "TimeTrial"){
+            SceneManager.LoadScene("PLNUSouth");
+        }else if(gameType == "Lan"){
+            SceneManager.LoadScene("LanMenu");
+        }
+    
     }
 
     public void pick(){

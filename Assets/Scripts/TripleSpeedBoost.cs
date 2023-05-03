@@ -17,8 +17,8 @@ public class TripleSpeedBoost : PowerUpParent
     public override List<float> activate(float acceleration, float topSpeed)
     {
         List<float> result = new List<float>();
-        result.Add(acceleration * 5);
-        result.Add(topSpeed * 3);
+        result.Add(acceleration * 3);
+        result.Add(topSpeed * 1.25f);
         result.Add(charges);
         return result;
         //return acceleration * 100;

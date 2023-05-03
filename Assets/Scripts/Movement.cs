@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -20,11 +21,12 @@ public class Movement : MonoBehaviour
     private float currentSpeed = 0f;
     private int playerNum = 1;
     private bool isBoosting = false;
-    private bool started = false;
+    public bool started = false;
 
     public int countDownInt = 3;
     public TMP_Text countText;
     public GameObject startCanvas;
+    private float startTime = 0;
 
     private CheckScript cs;
     private LapScript ls;
@@ -37,50 +39,54 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+    }
+
+    private void Awake(){
+
         cs = gameObject.GetComponentInChildren<CheckScript>();
         ls = gameObject.GetComponentInChildren<LapScript>();
         ps = gameObject.GetComponentInChildren<PositionScript>();
-
         Application.targetFrameRate = 100;
         startCanvas = GameObject.Find("StartCanvas");
+        startCanvas.SetActive(true);
+
         countText = startCanvas.GetComponentInChildren<TMP_Text>();
 
         rb = gameObject.GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
 
-
-        StartCoroutine(countDown());
-        
-
-
     }
 
-    IEnumerator countDown(){
-        
-        while(countDownInt > 0){
-            countText.text = countDownInt.ToString();
-
-            yield return new WaitForSeconds(1f);
-
-            countDownInt--;
-
-        }
-
-        countText.text = "GO";
-        started = true;
-
-        yield return new WaitForSeconds(1f);
-        startCanvas.SetActive(false);
-        
+    private void OnEnable(){
+        started = false;
+        startTime = Time.time;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         cs.setCheckNum(currentCheck);
         ls.setLapNum(laps+1);
         ps.setPositionNum(position);
+        if(!started && Time.time - startTime > 1){
+            
+            if(countDownInt >= 1){
+                countText.text = countDownInt.ToString();
+                countDownInt--;
+            }else if(countDownInt == 0){
+                countText.text = "GO";
+                started = true;
+                //startCanvas.SetActive(false);
+            }
+            startTime = Time.time;
+        }
         if(started){
+
+            if(startCanvas.activeSelf && Time.time - startTime > 1){
+                startCanvas.SetActive(false);
+            }
+            
             if (playerInput.actions["Move"].ReadValue<Vector2>().x >0.2f || playerInput.actions["Move"].ReadValue<Vector2>().x <-0.2f)
             {
                 float change = handling * Mathf.Sign(playerInput.actions["Move"].ReadValue<Vector2>().x);
@@ -130,16 +136,16 @@ public class Movement : MonoBehaviour
         {
             if (isBoosting == false)
             {
-                acceleration = 0.005f;
-                topSpeed = 2f;
+                //acceleration = 0.005f;
+                //topSpeed = 2f;
             }
         }
         if (collision.gameObject.tag == "road")
         {
             if (isBoosting == false)
             {
-                acceleration = 0.01f;
-                topSpeed = 4f;
+                //acceleration = 0.01f;
+                //topSpeed = 4f;
             }
         }
     }
