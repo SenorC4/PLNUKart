@@ -9,6 +9,7 @@ public class Factory : MonoBehaviour
     public GameObject HeavyKart;
     public GameObject player1;
     public GameObject player2;
+    List<GameObject> timers;
 
     // Start is called before the first frame update
     void Start()
@@ -77,6 +78,15 @@ public class Factory : MonoBehaviour
         }
 
         Debug.Log("Created");
+
+        if(MainMenu.getGameType() != "TimeTrial"){
+            timers = new List<GameObject>();
+
+            foreach(GameObject timer in GameObject.FindGameObjectsWithTag("StopWatch")){
+                timer.SetActive(false);
+                timers.Add(timer);
+            }
+        }
 
     }
 
