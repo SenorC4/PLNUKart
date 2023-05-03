@@ -12,8 +12,8 @@ public class LightKart : KartParent
         rb = gameObject.GetComponent<Rigidbody>();
         pi = gameObject.GetComponent<PlayerInput>();
         setAcceleration(.005f);
-        setHandling(20f);
-        setTopSpeed(10f);
+        setHandling(45f);
+        setTopSpeed(27f);
         GetComponent<Movement>().setStats(getAcceleration(), getTopSpeed(), getHandling(), false);
         setMovement(GetComponent<Movement>());
     }

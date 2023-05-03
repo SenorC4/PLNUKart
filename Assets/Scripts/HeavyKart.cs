@@ -12,8 +12,8 @@ public class HeavyKart : KartParent
         rb = gameObject.GetComponent<Rigidbody>();
         pi = gameObject.GetComponent<PlayerInput>();
         setAcceleration(.0005f);
-        setHandling(12f);
-        setTopSpeed(14f);
+        setHandling(30f);
+        setTopSpeed(35f);
         GetComponent<Movement>().setStats(getAcceleration(), getTopSpeed(), getHandling(), false);
         setMovement(GetComponent<Movement>());
     }
