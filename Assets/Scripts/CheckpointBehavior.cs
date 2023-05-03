@@ -27,21 +27,22 @@ public class CheckpointBehavior : MonoBehaviour
     {
         if (cp.getCurrentCheck(p) == checkNum)
         {
-            if(checkNum >= 7){
-                endScreen.SetActive(true);
-                Time.timeScale = 0;
-            }
+            
 
-            mr.enabled = false;
+            //mr.enabled = false;
             cp.setCurrentCheck(checkNum + 1, p);
             if (cp.getCurrentCheck(p) >= cp.getMax())
             {
                 cp.setCurrentCheck(0, p);
                 cp.setLaps(p);
+                if(cp.getLaps(p) >= 2){
+                    endScreen.SetActive(true);
+                    Time.timeScale = 0;
+                }
             }
             Debug.Log("Player" + p + ": Checkpoint " + cp.getCurrentCheck(p));
 
-            
+           
         }
     }
 }

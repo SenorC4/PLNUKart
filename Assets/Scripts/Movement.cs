@@ -96,7 +96,7 @@ public class Movement : MonoBehaviour
             }
             if (playerInput.actions["Move"].ReadValue<Vector2>().y != 0)
             {
-                currentSpeed += 30 * acceleration * Mathf.Sign(playerInput.actions["Move"].ReadValue<Vector2>().y);
+                currentSpeed += 200 * acceleration * Mathf.Sign(playerInput.actions["Move"].ReadValue<Vector2>().y);
                 if (currentSpeed > topSpeed) currentSpeed = topSpeed;
                 if (currentSpeed < -topSpeed / 2) currentSpeed = -topSpeed / 2;
 
@@ -159,7 +159,12 @@ public class Movement : MonoBehaviour
     {
         if (other.gameObject.tag == "checkpoint")
         {
-            other.gameObject.GetComponent<CheckpointBehavior>().checkHit(playerNum);
+            if(gameObject.tag == "player1"){
+                other.gameObject.GetComponent<CheckpointBehavior>().checkHit(1);
+            }else{
+                other.gameObject.GetComponent<CheckpointBehavior>().checkHit(2);
+
+            }
         }
     }
 
