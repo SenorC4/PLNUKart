@@ -5,6 +5,7 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     public TMPro.TMP_Text inGameTimer;
+    public TMPro.TMP_Text place;
     private float timer;
     //private MainMenu menu;
     private string gameType;
@@ -14,16 +15,26 @@ public class Timer : MonoBehaviour
         //menu = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainMenu>().getGameType();
         //gameType = menu.getGameType();
         gameType = MainMenu.getGameType();
+
+        if(gameType != "TimeTrial"){
+            inGameTimer.gameObject.SetActive(false);
+            place.gameObject.SetActive(true);
+        }else{
+            inGameTimer.gameObject.SetActive(true);
+            place.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(gameType);
-        timer += Time.deltaTime;
-        if (gameType == "TimeTrial")
-        {
-            inGameTimer.text = timer.ToString("F2");
+        if(Movement.getStarted()){
+            //Debug.Log(gameType);
+            timer += Time.deltaTime;
+            if (gameType == "TimeTrial")
+            {
+                inGameTimer.text = timer.ToString("F2");
+            }
         }
     }
 

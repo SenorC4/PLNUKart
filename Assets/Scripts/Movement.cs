@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour
     private float currentSpeed = 0f;
     private int playerNum = 1;
     private bool isBoosting = false;
-    public bool started = false;
+    public static bool started = false;
 
     public int countDownInt = 3;
     public TMP_Text countText;
@@ -166,6 +166,10 @@ public class Movement : MonoBehaviour
 
             }
         }
+    }
+
+    public static bool getStarted(){
+        return started;
     }
 
     public void setLaps(int l)
