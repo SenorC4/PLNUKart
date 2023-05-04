@@ -25,11 +25,12 @@ public class Timer : MonoBehaviour
         if(gameType != "TimeTrial"){
             inGameTimer.gameObject.SetActive(false);
             place.gameObject.SetActive(true);
+            endTimer.gameObject.SetActive(false);
             
         }else{
             inGameTimer.gameObject.SetActive(true);
             place.gameObject.SetActive(false);
-            endTimer.gameObject.SetActive(false);
+            endTimer.gameObject.SetActive(true);
             
         }
     }
