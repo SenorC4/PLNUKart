@@ -44,7 +44,6 @@ public class Movement : MonoBehaviour
     }
 
     private void Awake(){
-
         cs = gameObject.GetComponentInChildren<CheckScript>();
         ls = gameObject.GetComponentInChildren<LapScript>();
         ps = gameObject.GetComponentInChildren<PositionScript>();

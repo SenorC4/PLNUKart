@@ -21,6 +21,8 @@ TagManager:
   - player2
   - EndScreen
   - EndScreen2
+  - EndTimer
+  - EndScreen0
   layers:
   - Default
   - TransparentFX

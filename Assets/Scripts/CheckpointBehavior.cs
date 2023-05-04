@@ -47,12 +47,17 @@ public class CheckpointBehavior : MonoBehaviour
                 if(cp.getLaps(p) > 1){
                     if(MainMenu.getGameType() == "SplitScreen"){
                         if(p == 1){
-                           end2.text = "2nd";
-                           end2.color = Color.gray;
+                            
+                            end2.text = "2nd";
+                            end2.color = Color.gray;
                         }else{
                             end1.text = "2nd";
                             end1.color = Color.gray;
                         }
+                    }else if(MainMenu.getGameType() == "TimeTrial"){
+                        end1.gameObject.SetActive(false);
+                        end2.gameObject.SetActive(false);
+
                     }
                     endScreen.SetActive(true);
                     Time.timeScale = 0;
