@@ -285,8 +285,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inGameTimer: {fileID: 4823068765039034783}
   place: {fileID: 6694018102203422633}
-  endTimer: {fileID: 0}
-  endScreen: {fileID: 0}
 --- !u!1 &7369395980326622678
 GameObject:
   m_ObjectHideFlags: 0
@@ -3183,6 +3181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876f8842b9b9e364cad5b8db1b9fa577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: -8567478229629935834}
 --- !u!1 &8698534223226559843
 GameObject:
   m_ObjectHideFlags: 0

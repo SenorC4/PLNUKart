@@ -926,7 +926,7 @@ PrefabInstance:
     - target: {fileID: 8518737314356791659, guid: 16a11fa9c0e96624ebea1a8d0ebdb62f,
         type: 3}
       propertyPath: m_text
-      value: LAN
+      value: Controls
       objectReference: {fileID: 0}
     - target: {fileID: 8518737314356791659, guid: 16a11fa9c0e96624ebea1a8d0ebdb62f,
         type: 3}
@@ -957,7 +957,12 @@ PrefabInstance:
     - target: {fileID: 8518737315447234224, guid: 16a11fa9c0e96624ebea1a8d0ebdb62f,
         type: 3}
       propertyPath: m_Name
-      value: LAN
+      value: Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518737315447234224, guid: 16a11fa9c0e96624ebea1a8d0ebdb62f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8518737315447234225, guid: 16a11fa9c0e96624ebea1a8d0ebdb62f,
         type: 3}
@@ -1082,7 +1087,7 @@ PrefabInstance:
     - target: {fileID: 8518737315447234226, guid: 16a11fa9c0e96624ebea1a8d0ebdb62f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Lan
+      value: controls
       objectReference: {fileID: 0}
     - target: {fileID: 8518737315447234226, guid: 16a11fa9c0e96624ebea1a8d0ebdb62f,
         type: 3}

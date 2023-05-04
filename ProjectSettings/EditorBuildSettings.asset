@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PLNUSouth.unity
     guid: 05f12be85f04a9c47a56ce60dc5a5fd6
+  - enabled: 1
+    path: Assets/Scenes/Controls.unity
+    guid: d6fff83e68f5e58448cf0f5eb665ab1c
   m_configObjects: {}

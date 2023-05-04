@@ -96,9 +96,15 @@ public class Movement : MonoBehaviour
                 Quaternion rotation = Quaternion.Euler(euler * Time.fixedDeltaTime);
                 rb.MoveRotation(rb.rotation * rotation);
             }
-            if (playerInput.actions["Move"].ReadValue<Vector2>().y != 0)
+            if (playerInput.actions["Move"].ReadValue<Vector2>().y != 0 || playerInput.actions["Forward"].ReadValue<float>() != 0)
             {
-                currentSpeed += 200 * acceleration * Mathf.Sign(playerInput.actions["Move"].ReadValue<Vector2>().y);
+                if(playerInput.actions["Forward"].ReadValue<float>() != 0){
+                    currentSpeed += 200 * acceleration * Mathf.Sign(playerInput.actions["Forward"].ReadValue<float>());
+
+                }else{
+                    currentSpeed += 200 * acceleration * Mathf.Sign(playerInput.actions["Move"].ReadValue<Vector2>().y);
+                }
+            
                 if (currentSpeed > topSpeed) currentSpeed = topSpeed;
                 if (currentSpeed < -topSpeed / 2) currentSpeed = -topSpeed / 2;
 

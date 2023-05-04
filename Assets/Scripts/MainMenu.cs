@@ -51,6 +51,9 @@ public class MainMenu : MonoBehaviour
         }
     
     }
+    public void controls(){
+        SceneManager.LoadScene("Controls");
+    }
 
     public void pick(){
         SceneManager.LoadScene("KartPicker");

@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
     Vector3 originalPos;
     float magnitude;
+
+    public PlayerInput playerInput;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +25,7 @@ public class CameraController : MonoBehaviour
     {
         magnitude = 0.0006f;
 
-        if (Input.GetKey(KeyCode.W))
+        if (playerInput.actions["Move"].ReadValue<Vector2>().y != 0 || playerInput.actions["Forward"].ReadValue<float>() != 0)
         {
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
