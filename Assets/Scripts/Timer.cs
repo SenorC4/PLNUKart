@@ -29,6 +29,7 @@ public class Timer : MonoBehaviour
         }else{
             inGameTimer.gameObject.SetActive(true);
             place.gameObject.SetActive(false);
+            endTimer.gameObject.SetActive(false);
             
         }
     }
