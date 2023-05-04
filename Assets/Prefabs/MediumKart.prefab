@@ -2127,7 +2127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 7483533523462669433}
-  started: 0
   countDownInt: 3
   countText: {fileID: 0}
   startCanvas: {fileID: 0}
