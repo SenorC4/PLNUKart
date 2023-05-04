@@ -1293,7 +1293,7 @@ GameObject:
   - component: {fileID: 276127055}
   m_Layer: 5
   m_Name: EndTimer
-  m_TagString: EndTimer
+  m_TagString: TimerText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3005,7 +3005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &572370096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3087,7 +3087,7 @@ RectTransform:
   - {fileID: 1984800351}
   - {fileID: 276127054}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3361,7 +3361,7 @@ RectTransform:
   m_Children:
   - {fileID: 1767093088}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3752,7 +3752,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &751599923
 PrefabInstance:
@@ -3960,7 +3960,7 @@ RectTransform:
   - {fileID: 1434050937}
   - {fileID: 141935639}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6225,6 +6225,11 @@ PrefabInstance:
       propertyPath: m_text
       value: Quit
       objectReference: {fileID: 0}
+    - target: {fileID: 8518737315447234220, guid: 16a11fa9c0e96624ebea1a8d0ebdb62f,
+        type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8518737315447234224, guid: 16a11fa9c0e96624ebea1a8d0ebdb62f,
         type: 3}
       propertyPath: m_Name
@@ -6954,7 +6959,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1762059644
 PrefabInstance:
@@ -7244,7 +7249,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1812952812
 MonoBehaviour:
@@ -8747,7 +8752,7 @@ PrefabInstance:
     - target: {fileID: 8407401364032291528, guid: 0b661756940b01249a4f94fcc621841b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8407401364032291528, guid: 0b661756940b01249a4f94fcc621841b,
         type: 3}

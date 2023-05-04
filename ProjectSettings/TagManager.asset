@@ -23,6 +23,7 @@ TagManager:
   - EndScreen2
   - EndTimer
   - EndScreen0
+  - TimerText
   layers:
   - Default
   - TransparentFX

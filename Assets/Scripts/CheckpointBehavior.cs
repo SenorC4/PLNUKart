@@ -19,6 +19,9 @@ public class CheckpointBehavior : MonoBehaviour
     {
         cp = gameObject.GetComponentInParent<CheckParent>();
         mr = gameObject.GetComponent<MeshRenderer>();
+        //endScreen.GetComponent<Renderer>().enabled = false;
+        endScreen.GetComponent<Canvas>().enabled = false;
+
         
         //mr.forceRenderingOff = true;
     }
@@ -59,8 +62,7 @@ public class CheckpointBehavior : MonoBehaviour
                         end2.gameObject.SetActive(false);
 
                     }
-                    endScreen.SetActive(true);
-                    Time.timeScale = 0;
+                endScreen.GetComponent<Canvas>().enabled = true;                    Time.timeScale = 0;
                 }
             }
             Debug.Log("Player" + p + ": Checkpoint " + cp.getCurrentCheck(p));
