@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class Movement : MonoBehaviour
 {
     [Header("Attributes")]
+    private float originalAcceleration, originalTopSpeed;
     private float acceleration = 0.01f;
     private float topSpeed = 4f;
     private float handling = 20f;
@@ -21,6 +22,7 @@ public class Movement : MonoBehaviour
     private float currentSpeed = 0f;
     private int playerNum = 1;
     private bool isBoosting = false;
+    private bool onGrass = false, onRoad = false;
     public static bool started = false;
 
     public int countDownInt = 3;
@@ -123,9 +125,11 @@ public class Movement : MonoBehaviour
     public void setStats(float acceleration, float topSpeed, float handling, bool isBoosting)
     {
         this.acceleration = acceleration;
+        originalAcceleration = acceleration;
         //Debug.Log(this.acceleration);
         //Debug.Log(acceleration);
         this.topSpeed = topSpeed;
+        originalTopSpeed = topSpeed;
         this.handling = handling;
         this.isBoosting = isBoosting;
     }
@@ -134,19 +138,23 @@ public class Movement : MonoBehaviour
     {
         if (collision.gameObject.tag == "grass")
         {
-            if (isBoosting == false)
+            onRoad = false;
+            if (onGrass == false)
             {
-                //acceleration = 0.005f;
-                //topSpeed = 2f;
+                acceleration = acceleration / 3;
+                topSpeed = topSpeed/3;
             }
+            onGrass = true;
         }
         if (collision.gameObject.tag == "road")
         {
-            if (isBoosting == false)
+            onGrass = false;
+            if (onRoad == false)
             {
-                //acceleration = 0.01f;
-                //topSpeed = 4f;
+                acceleration = originalAcceleration;
+                topSpeed = originalTopSpeed;
             }
+            onRoad = true;
         }
     }
 
